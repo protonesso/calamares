@@ -21,6 +21,7 @@
 #include "JobQueue.h"
 
 #include "utils/Logger.h"
+#include "utils/Units.h"
 
 #include <QFile>
 #include <QJsonDocument>
@@ -35,6 +36,8 @@
 
 namespace bp = boost::python;
 #endif
+
+using CalamaresUtils::operator""_MiB;
 
 namespace Calamares {
 
@@ -109,6 +112,30 @@ GlobalStorage::save(const QString& filename)
     return true;
 }
 
+bool
+GlobalStorage::load( const QString& filename )
+{
+    QFile f( filename );
+    if ( !f.open( QFile::ReadOnly ) )
+        return false;
+
+    QJsonParseError e;
+    QJsonDocument d = QJsonDocument::fromJson( f.read( 1_MiB ), &e );
+    if ( d.isNull() )
+        cWarning() << filename << e.errorString();
+    else if ( !d.isObject() )
+        cWarning() << filename << "Not suitable JSON.";
+    else
+    {
+        auto map = d.toVariant().toMap();
+        for( auto i = map.constBegin() ; i != map.constEnd() ; ++i )
+        {
+            insert( i.key(), *i );
+        }
+        return true;
+    }
+    return false;
+}
 
 } // namespace Calamares
 

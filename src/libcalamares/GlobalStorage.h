@@ -69,6 +69,14 @@ public:
      */
     bool save( const QString& filename );
 
+    /** @brief Adds the keys from the given JSON file
+     *
+     * No tidying, sanitization, or censoring is done.
+     * The JSON file is read and each key is added as a value to
+     * the global storage.
+     */
+    bool load( const QString& filename );
+
 signals:
     void changed();
 
