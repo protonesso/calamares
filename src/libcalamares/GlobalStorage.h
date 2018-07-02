@@ -24,7 +24,7 @@
 
 #include <QVariantMap>
 
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
 namespace boost
 {
 namespace python
@@ -80,7 +80,7 @@ private:
 
 } // namespace Calamares
 
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
 namespace CalamaresPython
 {
 

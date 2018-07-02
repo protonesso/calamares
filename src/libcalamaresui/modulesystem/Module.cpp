@@ -28,7 +28,7 @@
 #include "Settings.h"
 #include "CalamaresConfig.h"
 
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
 #include "PythonJobModule.h"
 #endif
 
@@ -99,7 +99,7 @@ Module::fromDescriptor( const QVariantMap& moduleDescriptor,
             m.reset( new ProcessJobModule() );
         else if ( intfString == "python" )
         {
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
             m.reset( new PythonJobModule() );
 #else
             cError() << "Python modules are not supported in this version of Calamares.";

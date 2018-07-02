@@ -42,8 +42,8 @@ cmake_minimum_required( VERSION 3.2 )
 option( INSTALL_CONFIG "Install configuration files" OFF )
 option( INSTALL_POLKIT "Install Polkit configuration" ON )
 option( BUILD_TESTING "Build the testing tree." ON )
-option( WITH_PYTHON "Enable Python modules API (requires Boost.Python)." ON )
-option( WITH_PYTHONQT "Enable next generation Python modules API (experimental, requires PythonQt)." ON )
+option( WITH_PYTHONBOOST "Enable Python modules API (requires Boost.Python)." ON )
+option( WITH_PYTHONQT "Enable next generation Python modules API (requires PythonQt)." ON )
 option( WITH_KF5Crash "Enable crash reporting with KCrash." ON )
 
 ### USE_*
@@ -274,11 +274,22 @@ endif()
 
 if( NOT PYTHONLIBS_FOUND OR NOT CALAMARES_BOOST_PYTHON3_FOUND )
     message(STATUS "Disabling Boost::Python modules")
-    set( WITH_PYTHON OFF )
+    set( WITH_PYTHONBOOST OFF )
 endif()
 if( NOT PYTHONLIBS_FOUND OR NOT PYTHONQT_FOUND )
     message(STATUS "Disabling PythonQt modules")
     set( WITH_PYTHONQT OFF )
+endif()
+
+# Only use one embedding; PythonQt can do everython Boost.Python can
+if( WITH_PYTHONQT AND WITH_PYTHONBOOST )
+    message(STATUS "Preferring PythonQt over Boost.Python")
+    set( WITH_PYTHONBOOST OFF )
+endif()
+if( WITH_PYTHONQT OR WITH_PYTHONBOOST )
+    set( WITH_PYTHON ON )
+else()
+    set( WITH_PYTHON OFF )
 endif()
 
 ### Transifex Translation status

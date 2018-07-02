@@ -43,7 +43,7 @@ include_directories(
     ${YAMLCPP_INCLUDE_DIR}
 )
 
-if( WITH_PYTHON )
+if( WITH_PYTHONBOOST )
     set( libSources
         ${libSources}
         PythonHelper.cpp

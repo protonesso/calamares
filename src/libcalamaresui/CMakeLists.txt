@@ -40,7 +40,7 @@ set( calamaresui_UI
     utils/DebugWindow.ui
 )
 
-if( WITH_PYTHON )
+if( WITH_PYTHONBOOST )
     list( APPEND calamaresui_SOURCES
         modulesystem/PythonJobModule.cpp
     )

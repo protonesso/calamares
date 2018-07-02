@@ -25,7 +25,7 @@
 #include <QFile>
 #include <QJsonDocument>
 
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
 #include "PythonHelper.h"
 
 
@@ -112,7 +112,7 @@ GlobalStorage::save(const QString& filename)
 
 } // namespace Calamares
 
-#ifdef WITH_PYTHON
+#ifdef WITH_PYTHONBOOST
 
 namespace CalamaresPython
 {
@@ -182,4 +182,4 @@ GlobalStoragePythonWrapper::value( const std::string& key ) const
 
 } // namespace CalamaresPython
 
-#endif // WITH_PYTHON
+#endif // WITH_PYTHONBOOST
