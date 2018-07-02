@@ -8,10 +8,13 @@
 #define CMAKE_INSTALL_FULL_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}/calamares"
 #define CMAKE_INSTALL_FULL_SYSCONFDIR "${CMAKE_INSTALL_FULL_SYSCONFDIR}"
 
-//cmakedefines for CMake variables (e.g. for optdepends) go here
+// Python API enabled at all?
+#cmakedefine WITH_PYTHON
+// Implementations of the PythonAPI
 #cmakedefine WITH_PYTHONBOOST
 #cmakedefine WITH_PYTHONQT
 
+// Crash handler support
 #cmakedefine WITH_KF5Crash
 #ifdef WITH_KF5Crash
 #define WITH_KCRASH
