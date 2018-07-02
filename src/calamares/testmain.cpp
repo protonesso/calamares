@@ -24,11 +24,13 @@
 
 #include "utils/Logger.h"
 #include "utils/YamlUtils.h"
+
 #include "modulesystem/Module.h"
 
-#include "Settings.h"
+#include "GlobalStorage.h"
 #include "Job.h"
 #include "JobQueue.h"
+#include "Settings.h"
 
 #include <QCommandLineOption>
 #include <QCommandLineParser>
@@ -51,6 +53,8 @@ handle_args( QCoreApplication& a )
 {
     QCommandLineOption debugLevelOption( QStringLiteral("D"),
                                           "Verbose output for debugging purposes (0-8).", "level" );
+    QCommandLineOption gsOption( QStringList{ "g", "globalstorage" },
+                                 "Global Storage file.", "globalstorage" );
 
     QCommandLineParser parser;
     parser.setApplicationDescription( "Calamares module tester" );
@@ -58,20 +62,30 @@ handle_args( QCoreApplication& a )
     parser.addVersionOption();
 
     parser.addOption( debugLevelOption );
+    parser.addOption( gsOption );
     parser.addPositionalArgument( "module", "Path or name of module to run." );
+    parser.addPositionalArgument( "config", "(optional) Path of job config file.", "[config]" );
 
     parser.process( a );
 
+    unsigned int dlevel = 0;
     if ( parser.isSet( debugLevelOption ) )
     {
         bool ok = true;
         int l = parser.value( debugLevelOption ).toInt( &ok );
-        unsigned int dlevel = 0;
         if ( !ok || ( l < 0 ) )
             dlevel = Logger::LOGVERBOSE;
         else
             dlevel = l;
-        Logger::setupLogLevel( dlevel );
+    }
+    Logger::setupLogLevel( dlevel );
+
+    if (parser.isSet( gsOption ) )
+    {
+        QString globalFile = parser.value( gsOption );
+        cDebug() << "Global Storage from" << globalFile;
+        if ( !Calamares::JobQueue::instance()->globalStorage()->load( globalFile ) )
+            cWarning() << "Could not load Global Storage from" << globalFile;
     }
 
     const QStringList args = parser.positionalArguments();
@@ -140,6 +154,7 @@ load_module( const ModuleConfig& moduleConfig )
         ? moduleDirectory + '/' + name + ".conf"
         : moduleConfig.configFile() );
 
+    cDebug() << "Using config file" << configFile;
     Calamares::Module* module = Calamares::Module::fromDescriptor(
         descriptor, name, configFile, moduleDirectory );
 
@@ -151,12 +166,12 @@ main( int argc, char* argv[] )
 {
     QCoreApplication a( argc, argv );
 
+    std::unique_ptr< Calamares::Settings > settings_p( new Calamares::Settings( QString(), true ) );
+    std::unique_ptr< Calamares::JobQueue > jobqueue_p( new Calamares::JobQueue( nullptr ) );
+
     ModuleConfig module = handle_args( a );
     if ( module.moduleName().isEmpty() )
         return 1;
-
-    std::unique_ptr< Calamares::Settings > settings_p( new Calamares::Settings( QString(), true ) );
-    std::unique_ptr< Calamares::JobQueue > jobqueue_p( new Calamares::JobQueue( nullptr ) );
 
     cDebug() << "Calamares test module-loader" << module.moduleName();
     Calamares::Module* m = load_module( module );
