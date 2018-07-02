@@ -154,7 +154,6 @@ load_module( const ModuleConfig& moduleConfig )
         ? moduleDirectory + '/' + name + ".conf"
         : moduleConfig.configFile() );
 
-    cDebug() << "Using config file" << configFile;
     Calamares::Module* module = Calamares::Module::fromDescriptor(
         descriptor, name, configFile, moduleDirectory );
 
@@ -199,7 +198,8 @@ main( int argc, char* argv[] )
         cDebug() << count << p->prettyName();
         Calamares::JobResult r = p->exec();
         if ( !r )
-            cDebug() << count << ".. failed" << r;
+            cWarning() << "Job" << count << ".. failed:"
+                << Logger::DebugList( QStringList() << r.message() << r.details() );
         ++count;
     }
 
