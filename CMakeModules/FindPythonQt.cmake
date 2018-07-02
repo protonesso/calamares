@@ -2,6 +2,10 @@
 #
 # Sets PYTHONQT_FOUND, PYTHONQT_INCLUDE_DIR, PYTHONQT_LIBRARY, PYTHONQT_LIBRARIES
 #
+# Also sets:
+#   - HAVE_PYTHONQT_CONSOLE if the scripting console headers are found
+#   - PYTHONQT_INCLUDE_DIRS
+#
 
 # Python is required
 find_package(PythonLibs)
@@ -139,6 +143,7 @@ if(PYTHONQT_INCLUDE_DIR AND PYTHONQT_LIBRARY AND PYTHONQT_QTALL_LIBRARY)
   set(PYTHONQT_FOUND 1)
   set(PythonQt_FOUND ${PYTHONQT_FOUND})
   set(PYTHONQT_LIBRARIES ${PYTHONQT_LIBRARY} ${PYTHONQT_LIBUTIL} ${PYTHONQT_QTALL_LIBRARY})
+  set(PYTHONQT_INCLUDE_DIRS ${PYTHONQT_INCLUDE_DIR})
 elseif(NOT PythonQt_FIND_QUIETLY)
   set(_missing "")
   if (NOT PYTHONQT_INCLUDE_DIR)
@@ -151,4 +156,26 @@ elseif(NOT PythonQt_FIND_QUIETLY)
     list(APPEND _missing "qtall")
   endif()
   message(STATUS "PythonQt not found, missing components ${_missing}")
+endif()
+
+if(PYTHONQT_FOUND)
+    # Handle variations in PythonQt packaging
+    find_file( HAVE_PYTHONQT_CONSOLE gui/PythonQtScriptingConsole.h HINTS ${PYTHONQT_INCLUDE_DIR} )
+    find_file( _qtall_header PythonQt_QtAll.h
+        HINTS
+            ${PYTHONQT_INCLUDE_DIR}/extensions/PythonQt_QtAll/
+            ${PYTHONQT_INCLUDE_DIR}
+    )
+    message( STATUS "PythonQt:\n\tConsole ${HAVE_PYTHONQT_CONSOLE}\n\tAll     ${_qtall_header}" )
+    file( RELATIVE_PATH _qtall_subdir ${PYTHONQT_INCLUDE_DIR} ${_qtall_header} )
+
+    if ( NOT _qtall_header )
+        message( FATAL_ERROR "No PythonQt_QtAll.h found." )
+    elseif ( _qtall_header STREQUAL "PythonQt_QtAll.h" )
+        # It's in the main include directory, nothing to do
+        message( STATUS "PythonQt_QtAll.h found in ${PYTHONQT_INCLUDE_DIR}" )
+    else()
+        get_filename_component( _qtall_subdir "${_qtall_subdir}" DIRECTORY )
+        list( APPEND PYTHONQT_INCLUDE_DIRS ${PYTHONQT_INCLUDE_DIR}/${_qtall_subdir} )
+    endif()
 endif()

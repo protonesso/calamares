@@ -14,6 +14,9 @@
 #cmakedefine WITH_PYTHONBOOST
 #cmakedefine WITH_PYTHONQT
 
+// Variations of PythonQt
+#cmakedefine HAVE_PYTHONQT_CONSOLE
+
 // Crash handler support
 #cmakedefine WITH_KF5Crash
 #ifdef WITH_KF5Crash

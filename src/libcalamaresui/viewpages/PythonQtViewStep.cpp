@@ -24,7 +24,9 @@
 #include "utils/Retranslator.h"
 #include "viewpages/PythonQtJob.h"
 
+#ifdef HAVE_PYTHONQT_CONSOLE
 #include <gui/PythonQtScriptingConsole.h>
+#endif
 
 #include <QBoxLayout>
 #include <QWidget>
@@ -160,7 +162,7 @@ PythonQtViewStep::isAtEnd() const
 }
 
 void
-PythonQtViewStep::onActivate() 
+PythonQtViewStep::onActivate()
 {
     CalamaresUtils::lookupAndCall( m_obj,
                                           { "onActivate",
@@ -218,10 +220,14 @@ PythonQtViewStep::setConfigurationMap( const QVariantMap& configurationMap )
 QWidget*
 PythonQtViewStep::createScriptingConsole()
 {
+#ifdef HAVE_PYTHONQT_CONSOLE
     PythonQtScriptingConsole* console = new PythonQtScriptingConsole( nullptr, m_cxt );
     console->setProperty( "classname",
                           m_cxt.getVariable( "_calamares_module_typename" ).toString() );
     return console;
+#else
+    return nullptr;
+#endif
 }
 
 }
