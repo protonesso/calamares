@@ -165,9 +165,10 @@ PythonQtViewModule::loadSelf()
 
         m_viewStep = new PythonQtViewStep( cxt );
 
+        using DR = Logger::DebugRow<const char*, void* >;
         cDebug() << "PythonQtViewModule loading self for instance" << instanceKey()
-                 << "\nPythonQtViewModule at address" << this
-                 << "\nViewStep at address" << m_viewStep;
+                 << DR( "Module   @", (void*)this )
+                 << DR( "ViewStep @", (void*)m_viewStep );
 
         m_viewStep->setModuleInstanceKey( instanceKey() );
         m_viewStep->setConfigurationMap( m_configurationMap );
