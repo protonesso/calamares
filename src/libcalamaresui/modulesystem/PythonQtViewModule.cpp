@@ -91,7 +91,7 @@ PythonQtViewModule::loadSelf()
             // Prepare GlobalStorage object, in module PythonQt.calamares
             if ( !s_gs )
                 s_gs = new ::GlobalStorage( Calamares::JobQueue::instance()->globalStorage() );
-            cala.addObject( "global_storage", s_gs );
+            cala.addObject( "globalstorage", s_gs );
 
             // Prepare Utils object, in module PythonQt.calamares
             if ( !s_utils )

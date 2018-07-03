@@ -191,7 +191,7 @@ class DummyPQJob:
 
     def exec(self):
         # As an example, we touch a file in the target root filesystem.
-        rmp = calamares.global_storage.value('rootMountPoint')
+        rmp = calamares.globalstorage.value('rootMountPoint')
         os.system("touch {}/calamares_dpqt_was_here".format(rmp))
         calamares.utils.debug("the dummy job says {}".format(self.my_msg))
         return {'ok': True}
