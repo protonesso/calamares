@@ -53,12 +53,10 @@ public:
     Calamares::JobResult exec() override;
 
 private:
-    explicit PythonQtJob( PythonQtObjectPtr cxt,
-                          PythonQtObjectPtr pyJob,
+    explicit PythonQtJob( PythonQtObjectPtr pyJob,
                           QObject* parent = nullptr );
     friend class Calamares::PythonQtViewStep; // only this one can call the ctor
 
-    PythonQtObjectPtr m_cxt;
     PythonQtObjectPtr m_pyJob;
 };
 

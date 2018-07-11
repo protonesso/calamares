@@ -21,6 +21,8 @@
 
 #include "ViewStep.h"
 
+#include "utils/PythonQtUtils.h"
+
 #include <PythonQt.h>
 
 namespace Calamares
@@ -30,7 +32,7 @@ class PythonQtViewStep : public Calamares::ViewStep
 {
     Q_OBJECT
 public:
-    PythonQtViewStep( PythonQtObjectPtr cxt,
+    PythonQtViewStep( CalamaresUtils::PythonQtModulePtr module,
                       QObject* parent = nullptr );
 
     QString prettyName() const override;
@@ -58,7 +60,7 @@ protected:
     QWidget* m_widget;
 
 private:
-    PythonQtObjectPtr m_cxt;
+    CalamaresUtils::PythonQtModulePtr m_pythonModule;
     PythonQtObjectPtr m_obj;
 };
 

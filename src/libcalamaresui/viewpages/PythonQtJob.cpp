@@ -20,11 +20,9 @@
 
 #include "utils/PythonQtUtils.h"
 
-PythonQtJob::PythonQtJob( PythonQtObjectPtr cxt,
-                          PythonQtObjectPtr pyJob,
+PythonQtJob::PythonQtJob( PythonQtObjectPtr pyJob,
                           QObject* parent )
     : Calamares::Job( parent )
-    , m_cxt( cxt )
     , m_pyJob( pyJob )
 {
 

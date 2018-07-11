@@ -137,11 +137,8 @@ PythonQtViewModule::loadSelf()
             return;
         }
 
-        // Construct empty Python module with the given name
-        PythonQtObjectPtr cxt =
-            PythonQt::self()->
-            createModuleFromScript( name() );
-        if ( cxt.isNull() )
+        m_pythonModule.reset( new CalamaresUtils::PythonQtModule( name() ) );
+        if ( m_pythonModule.isNull() || m_pythonModule->isNull() )
         {
             cDebug() << "Cannot load PythonQt context from file"
                      << fullPath
@@ -150,20 +147,9 @@ PythonQtViewModule::loadSelf()
             return;
         }
 
-        static const QLatin1Literal calamares_module_annotation(
-            "_calamares_module_typename = ''\n"
-            "def calamares_module(viewmodule_type):\n"
-            "    global _calamares_module_typename\n"
-            "    _calamares_module_typename = viewmodule_type.__name__\n"
-            "    return viewmodule_type\n" );
+        m_pythonModule->load( fullPath );
 
-        // Load in the decorator
-        PythonQt::self()->evalScript( cxt, calamares_module_annotation );
-
-        // Load the module
-        PythonQt::self()->evalFile( cxt, fullPath );
-
-        m_viewStep = new PythonQtViewStep( cxt );
+        m_viewStep = new PythonQtViewStep( m_pythonModule );
 
         using DR = Logger::DebugRow<const char*, void* >;
         cDebug() << "PythonQtViewModule loading self for instance" << instanceKey()

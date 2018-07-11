@@ -21,7 +21,6 @@
 #include "utils/Logger.h"
 #include "utils/CalamaresUtilsGui.h"
 #include "utils/PythonQtUtils.h"
-#include "utils/Retranslator.h"
 #include "viewpages/PythonQtJob.h"
 
 #ifdef HAVE_PYTHONQT_CONSOLE
@@ -35,37 +34,19 @@
 namespace Calamares
 {
 
-PythonQtViewStep::PythonQtViewStep( PythonQtObjectPtr cxt,
+PythonQtViewStep::PythonQtViewStep( CalamaresUtils::PythonQtModulePtr module,
                                     QObject* parent )
     : ViewStep( parent )
     , m_widget( new QWidget() )
-    , m_cxt( cxt )
+    , m_pythonModule( module )
 {
-    PythonQt* pq = PythonQt::self();
-    Q_ASSERT( pq );
-
-    // The @calamares_module decorator should have filled _calamares_module_typename
-    // for us.
-    QString className = m_cxt.getVariable( "_calamares_module_typename" ).toString();
-
-    // Instantiate an object of the class marked with @calamares_module and
-    // store it as _calamares_module.
-    pq->evalScript( m_cxt, QString( "_calamares_module = %1()" )
-                                            .arg( className ) );
-    m_obj = pq->lookupObject( m_cxt, "_calamares_module" );
-
-    Q_ASSERT( !m_obj.isNull() );    // no entry point, no party
+    Q_ASSERT( PythonQt::self() );
 
     // Prepare the base widget for the module's pages
     m_widget->setLayout( new QVBoxLayout );
     CalamaresUtils::unmarginLayout( m_widget->layout() );
-    m_cxt.addObject( "_calamares_module_basewidget", m_widget );
 
-    CALAMARES_RETRANSLATE_WIDGET( m_widget,
-        CalamaresUtils::lookupAndCall( m_obj,
-                                       { "retranslate" },
-                                       { CalamaresUtils::translatorLocaleName() } );
-    )
+    m_obj = module->createViewStep( m_widget );
 }
 
 
@@ -85,24 +66,6 @@ PythonQtViewStep::widget()
     if ( m_widget->layout()->count() > 1 )
         cWarning() << "PythonQtViewStep wrapper widget has more than 1 child. "
                     "This should never happen.";
-
-    bool nothingChanged = m_cxt.evalScript(
-        "_calamares_module.widget() in _calamares_module_basewidget.children()" ).toBool();
-    if ( nothingChanged )
-        return m_widget;
-
-    // Else, we either don't have a child widget, or we have a child widget that
-    // was previously set and doesn't apply any more since the Python module
-    // set a new one.
-
-    // First we clear the layout, which should only ever have 1 item.
-    // We only remove from the layout and not delete because Python is in charge
-    // of memory management for these widgets.
-    while ( m_widget->layout()->itemAt( 0 ) )
-        m_widget->layout()->takeAt( 0 );
-
-    m_cxt.evalScript(
-        "_calamares_module_basewidget.layout().addWidget(_calamares_module.widget())" );
 
     return m_widget;
 }
@@ -203,7 +166,7 @@ PythonQtViewStep::jobs() const
         if ( aJob.isNull() )
             break;
 
-        jobs.append( Calamares::job_ptr( new PythonQtJob( m_cxt, aJob ) ) );
+        jobs.append( Calamares::job_ptr( new PythonQtJob( aJob ) ) );
     }
 
     return jobs;

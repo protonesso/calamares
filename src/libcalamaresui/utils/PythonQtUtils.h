@@ -21,6 +21,7 @@
 
 #include <PythonQt.h>
 
+#include <QSharedPointer>
 #include <QVariant>
 
 
@@ -32,6 +33,36 @@ QVariant lookupAndCall( PyObject* object,
                         const QStringList& candidateNames,
                         const QVariantList& args = QVariantList(),
                         const QVariantMap& kwargs = QVariantMap() );
+
+
+/** @brief A handle for a Python module
+ *
+ * Different from a Calamares module, this is a handle for a Python module,
+ * which will generally be impored from main.py in a Calamares module.
+ */
+class PythonQtModule
+{
+public:
+    /** @brief Create a Python module handle for the given name (e.g. instance key) */
+    PythonQtModule( const QString& name );
+    ~PythonQtModule();
+
+    bool isNull() const { return m_module.isNull(); }
+
+    /** @brief Load the given Python file (e.g. path to main.py) */
+    void load( const QString& modulePath );
+
+    ::PythonQtObjectPtr createViewStep( QWidget* parent );
+
+    ::PythonQtObjectPtr& handle() { return m_module; }
+
+protected:
+    ::PythonQtObjectPtr m_module;
+    QString m_viewmoduleName;
+    QString m_viewclassName;
+};
+
+using PythonQtModulePtr = QSharedPointer< PythonQtModule >;
 
 } //ns
 

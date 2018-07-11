@@ -22,6 +22,8 @@
 #include "UiDllMacro.h"
 #include "Module.h"
 
+#include "utils/PythonQtUtils.h"
+
 namespace Calamares
 {
 
@@ -44,6 +46,7 @@ private:
     explicit PythonQtViewModule();
     virtual ~PythonQtViewModule();
 
+    CalamaresUtils::PythonQtModulePtr m_pythonModule;
     ViewStep* m_viewStep = nullptr;
 
     QString m_scriptFileName;
