@@ -21,6 +21,8 @@
 
 #include "Job.h"
 
+#include "utils/PythonQtUtils.h"
+
 #include <PythonQt.h>
 
 namespace Calamares
@@ -40,10 +42,12 @@ public:
     Calamares::JobResult exec() override;
 
 private:
-    explicit PythonQtJob( PythonQtObjectPtr pyJob,
+    explicit PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
+                          PythonQtObjectPtr pyJob,
                           QObject* parent = nullptr );
     friend class Calamares::PythonQtViewStep; // only this one can call the ctor
 
+    CalamaresUtils::PythonQtModulePtr m_pythonModule;
     PythonQtObjectPtr m_pyJob;
 };
 

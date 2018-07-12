@@ -22,17 +22,22 @@
 #include "utils/Logger.h"
 #include "utils/Retranslator.h"
 
+#include <QMutex>
+#include <QThread>
 #include <QWidget>
 
 namespace CalamaresUtils
 {
 
 QVariant
-lookupAndCall( PyObject* object,
+PythonQtModule::lookupAndCall( PythonQtObjectPtr object,
                const QStringList& candidateNames,
                const QVariantList& args,
                const QVariantMap& kwargs )
 {
+    cDebug() << __FUNCTION__ << "PyObj" << (void*)object << "ThrId" << QThread::currentThreadId();
+    QMutexLocker l(&m_locker);
+
     Q_ASSERT( object );
     Q_ASSERT( !candidateNames.isEmpty() );
 
@@ -40,7 +45,10 @@ lookupAndCall( PyObject* object,
     {
         PythonQtObjectPtr callable = PythonQt::self()->lookupCallable( object, name );
         if ( callable )
+        {
+            cDebug() << "  .." << name << (void*)callable;
             return callable.call( args, kwargs );
+        }
     }
 
     // If we haven't found a callable with the given names, we force an error:
@@ -110,7 +118,7 @@ PythonQtModule::createViewStep(QWidget* parent)
     PythonQt::self()->evalScript( m_module, QStringLiteral( "_calamares_module._basewidget.layout().addWidget(_calamares_module.widget())" ) );
 
     CALAMARES_RETRANSLATE_WIDGET( parent,
-        CalamaresUtils::lookupAndCall( obj,
+        this->lookupAndCall( obj,
                                        { "retranslate" },
                                        { CalamaresUtils::translatorLocaleName() } );
     )

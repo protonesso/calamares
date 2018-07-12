@@ -53,7 +53,7 @@ PythonQtViewStep::PythonQtViewStep( CalamaresUtils::PythonQtModulePtr module,
 QString
 PythonQtViewStep::prettyName() const
 {
-    return CalamaresUtils::lookupAndCall( m_obj,
+    return m_pythonModule->lookupAndCall( m_obj,
                                           { "prettyName",
                                             "prettyname",
                                             "pretty_name" } ).toString();
@@ -74,21 +74,21 @@ PythonQtViewStep::widget()
 void
 PythonQtViewStep::next()
 {
-    CalamaresUtils::lookupAndCall( m_obj, { "next" } );
+    m_pythonModule->lookupAndCall( m_obj, { "next" } );
 }
 
 
 void
 PythonQtViewStep::back()
 {
-    CalamaresUtils::lookupAndCall( m_obj, { "back" } );
+    m_pythonModule->lookupAndCall( m_obj, { "back" } );
 }
 
 
 bool
 PythonQtViewStep::isNextEnabled() const
 {
-    return CalamaresUtils::lookupAndCall( m_obj,
+    return m_pythonModule->lookupAndCall( m_obj,
                                           { "isNextEnabled",
                                             "isnextenabled",
                                             "is_next_enabled" } ).toBool();
@@ -98,7 +98,7 @@ PythonQtViewStep::isNextEnabled() const
 bool
 PythonQtViewStep::isBackEnabled() const
 {
-    return CalamaresUtils::lookupAndCall( m_obj,
+    return m_pythonModule->lookupAndCall( m_obj,
                                           { "isBackEnabled",
                                             "isbackenabled",
                                             "is_back_enabled" } ).toBool();
@@ -108,7 +108,7 @@ PythonQtViewStep::isBackEnabled() const
 bool
 PythonQtViewStep::isAtBeginning() const
 {
-    return CalamaresUtils::lookupAndCall( m_obj,
+    return m_pythonModule->lookupAndCall( m_obj,
                                           { "isAtBeginning",
                                             "isatbeginning",
                                             "is_at_beginning" } ).toBool();
@@ -118,7 +118,7 @@ PythonQtViewStep::isAtBeginning() const
 bool
 PythonQtViewStep::isAtEnd() const
 {
-    return CalamaresUtils::lookupAndCall( m_obj,
+    return m_pythonModule->lookupAndCall( m_obj,
                                           { "isAtEnd",
                                             "isatend",
                                             "is_at_end" } ).toBool();
@@ -127,7 +127,7 @@ PythonQtViewStep::isAtEnd() const
 void
 PythonQtViewStep::onActivate()
 {
-    CalamaresUtils::lookupAndCall( m_obj,
+    m_pythonModule->lookupAndCall( m_obj,
                                           { "onActivate",
                                             "onactivate",
                                             "on_activate" });
@@ -136,7 +136,7 @@ PythonQtViewStep::onActivate()
 void
 PythonQtViewStep::onLeave()
 {
-    CalamaresUtils::lookupAndCall( m_obj,
+    m_pythonModule->lookupAndCall( m_obj,
                                           { "onLeave",
                                             "onleave",
                                             "on_leave" });
@@ -166,7 +166,7 @@ PythonQtViewStep::jobs() const
         if ( aJob.isNull() )
             break;
 
-        jobs.append( Calamares::job_ptr( new PythonQtJob( aJob ) ) );
+        jobs.append( Calamares::job_ptr( new PythonQtJob( m_pythonModule, aJob ) ) );
     }
 
     return jobs;

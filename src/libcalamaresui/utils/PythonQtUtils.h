@@ -21,20 +21,13 @@
 
 #include <PythonQt.h>
 
+#include <QMutex>
 #include <QSharedPointer>
 #include <QVariant>
 
 
 namespace CalamaresUtils
 {
-//NOTE: when running this, it is assumed that Python is initialized and
-//      PythonQt::self() is valid.
-QVariant lookupAndCall( PyObject* object,
-                        const QStringList& candidateNames,
-                        const QVariantList& args = QVariantList(),
-                        const QVariantMap& kwargs = QVariantMap() );
-
-
 /** @brief A handle for a Python module
  *
  * Different from a Calamares module, this is a handle for a Python module,
@@ -56,10 +49,18 @@ public:
 
     ::PythonQtObjectPtr& handle() { return m_module; }
 
+    //NOTE: when running this, it is assumed that Python is initialized and
+    //      PythonQt::self() is valid.
+    QVariant lookupAndCall( PythonQtObjectPtr object,
+                            const QStringList& candidateNames,
+                            const QVariantList& args = QVariantList(),
+                            const QVariantMap& kwargs = QVariantMap() );
+
 protected:
     ::PythonQtObjectPtr m_module;
     QString m_viewmoduleName;
     QString m_viewclassName;
+    QMutex m_locker;
 };
 
 using PythonQtModulePtr = QSharedPointer< PythonQtModule >;

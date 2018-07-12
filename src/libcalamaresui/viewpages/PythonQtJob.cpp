@@ -20,9 +20,11 @@
 
 #include "utils/PythonQtUtils.h"
 
-PythonQtJob::PythonQtJob( PythonQtObjectPtr pyJob,
+PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
+                          PythonQtObjectPtr pyJob,
                           QObject* parent )
     : Calamares::Job( parent )
+    , m_pythonModule( module )
     , m_pyJob( pyJob )
 {
 
@@ -32,7 +34,7 @@ PythonQtJob::PythonQtJob( PythonQtObjectPtr pyJob,
 QString
 PythonQtJob::prettyName() const
 {
-    return CalamaresUtils::lookupAndCall( m_pyJob,
+    return m_pythonModule->lookupAndCall( m_pyJob,
                                           { "prettyName",
                                             "prettyname",
                                             "pretty_name" } ).toString();
@@ -42,7 +44,7 @@ PythonQtJob::prettyName() const
 QString
 PythonQtJob::prettyDescription() const
 {
-    return CalamaresUtils::lookupAndCall( m_pyJob,
+    return m_pythonModule->lookupAndCall( m_pyJob,
                                           { "prettyDescription",
                                             "prettydescription",
                                             "pretty_description" } ).toString();
@@ -52,7 +54,7 @@ PythonQtJob::prettyDescription() const
 QString
 PythonQtJob::prettyStatusMessage() const
 {
-    return CalamaresUtils::lookupAndCall( m_pyJob,
+    return m_pythonModule->lookupAndCall( m_pyJob,
                                           { "prettyStatusMessage",
                                             "prettystatusmessage",
                                             "pretty_status_message" } ).toString();
@@ -62,7 +64,7 @@ PythonQtJob::prettyStatusMessage() const
 Calamares::JobResult
 PythonQtJob::exec()
 {
-    QVariant response = m_pyJob.call( "exec" );
+    QVariant response = m_pythonModule->lookupAndCall( m_pyJob, { "exec" } );
     if ( response.isNull() )
         return Calamares::JobResult::ok();
 
