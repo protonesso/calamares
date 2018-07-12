@@ -35,7 +35,6 @@ PythonQtModule::lookupAndCall( PythonQtObjectPtr object,
                const QVariantList& args,
                const QVariantMap& kwargs )
 {
-    cDebug() << __FUNCTION__ << "PyObj" << (void*)object << "ThrId" << QThread::currentThreadId();
     QMutexLocker l(&m_locker);
 
     Q_ASSERT( object );
@@ -45,10 +44,7 @@ PythonQtModule::lookupAndCall( PythonQtObjectPtr object,
     {
         PythonQtObjectPtr callable = PythonQt::self()->lookupCallable( object, name );
         if ( callable )
-        {
-            cDebug() << "  .." << name << (void*)callable;
             return callable.call( args, kwargs );
-        }
     }
 
     // If we haven't found a callable with the given names, we force an error:
