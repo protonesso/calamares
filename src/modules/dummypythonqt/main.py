@@ -90,8 +90,11 @@ class DummyPythonQtViewStep:
         # (without a special "slot" designation).
         btn.connect("clicked(bool)", self.on_btn_clicked)
 
+        self.button_count = 1
+
     def on_btn_clicked(self):
-        self.main_widget.layout().addWidget(QLabel(_("A new QLabel.")))
+        self.main_widget.layout().addWidget(QLabel(_("A new QLabel (%d).") % self.button_count))
+        self.button_count += 1
 
     def prettyName(self):
         return _("Dummy PythonQt ViewStep")
@@ -125,7 +128,7 @@ class DummyPythonQtViewStep:
 
     def jobs(self):
         # Returns a list of objects that implement Calamares::Job.
-        return [DummyPQJob("Dummy PythonQt job reporting for duty")]
+        return [DummyPQJob("Dummy PythonQt job %d reporting for duty" % x) for x in range(self.button_count)]
 
     def widget(self):
         # Returns the base QWidget of this module's UI.
