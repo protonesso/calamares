@@ -28,19 +28,6 @@ namespace Calamares
 class PythonQtViewStep;
 }
 
-class PythonQtJobResult : public QObject, public Calamares::JobResult
-{
-    Q_OBJECT
-public:
-    explicit PythonQtJobResult( bool ok,
-                                const QString& message,
-                                const QString& details )
-        : QObject( nullptr )
-        , Calamares::JobResult( ok, message, details )
-    {}
-};
-
-
 class PythonQtJob : public Calamares::Job
 {
     Q_OBJECT
