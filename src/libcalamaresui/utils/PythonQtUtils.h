@@ -41,13 +41,13 @@ public:
     ~PythonQtModule();
 
     bool isNull() const { return m_module.isNull(); }
+    QString name() const { return m_moduleName; }
+    QString viewClass() const { return m_viewclassName; }
 
     /** @brief Load the given Python file (e.g. path to main.py) */
     void load( const QString& modulePath );
 
     ::PythonQtObjectPtr createViewStep( QWidget* parent );
-
-    ::PythonQtObjectPtr& handle() { return m_module; }
 
     //NOTE: when running this, it is assumed that Python is initialized and
     //      PythonQt::self() is valid.
@@ -58,7 +58,7 @@ public:
 
 protected:
     ::PythonQtObjectPtr m_module;
-    QString m_viewmoduleName;
+    QString m_moduleName;
     QString m_viewclassName;
     QMutex m_locker;
 };

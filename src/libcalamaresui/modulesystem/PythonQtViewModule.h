@@ -29,7 +29,21 @@ namespace Calamares
 
 class ViewStep;
 
-class UIDLLEXPORT PythonQtViewModule : public Module
+class PythonQtModuleBase : public Module
+{
+protected:
+    explicit PythonQtModuleBase();
+    virtual ~PythonQtModuleBase();
+
+    void initFrom( const QVariantMap& moduleDescriptor ) override;
+    void loadScript();
+
+    CalamaresUtils::PythonQtModulePtr m_pythonModule;
+    QString m_scriptFileName;
+    QString m_workingPath;
+};
+
+class UIDLLEXPORT PythonQtViewModule : public PythonQtModuleBase
 {
 public:
     Type type() const override;
@@ -38,19 +52,12 @@ public:
     void loadSelf() override;
     JobList jobs() const override;
 
-protected:
-    void initFrom( const QVariantMap& moduleDescriptor ) override;
-
 private:
     friend class Module; //so only the superclass can instantiate
     explicit PythonQtViewModule();
     virtual ~PythonQtViewModule();
 
-    CalamaresUtils::PythonQtModulePtr m_pythonModule;
     ViewStep* m_viewStep = nullptr;
-
-    QString m_scriptFileName;
-    QString m_workingPath;
 };
 
 } // namespace Calamares

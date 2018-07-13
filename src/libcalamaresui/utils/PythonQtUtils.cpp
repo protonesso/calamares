@@ -53,7 +53,7 @@ PythonQtModule::lookupAndCall( PythonQtObjectPtr object,
 
 PythonQtModule::PythonQtModule(const QString& name)
     : m_module( PythonQt::self()->createModuleFromScript( name ) )
-    , m_viewmoduleName( name )
+    , m_moduleName( name )
 {
 }
 
@@ -90,7 +90,7 @@ PythonQtModule::createViewStep(QWidget* parent)
 {
     if ( m_viewclassName.isEmpty() )
     {
-        cError() << "No view class name set by module" << m_viewmoduleName;
+        cError() << "No view class name set by module" << m_moduleName;
         return nullptr;
     }
     if ( !PythonQt::self() )
