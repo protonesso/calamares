@@ -85,6 +85,8 @@ PythonQtModule::load(const QString& modulePath)
 
     // Load the module
     PythonQt::self()->evalFile( m_module, modulePath );
+    if ( PythonQt::self()->hadError() )
+        cError() << "Loading" << modulePath << "probably failed.";
 
     // The @calamares_module decorator should have filled _calamares_module_typename
     // for us.
