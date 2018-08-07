@@ -69,6 +69,8 @@ public slots:
 
     QString obscure( const QString& string ) const;
 
+    QString gettext_path() const;
+
 private:
     inline int _handle_check_target_env_call_error( int ec, const QString& cmd ) const;
 

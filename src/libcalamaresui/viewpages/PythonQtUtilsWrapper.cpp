@@ -132,6 +132,13 @@ Utils::obscure( const QString& string ) const
 }
 
 
+QString
+Utils::gettext_path() const
+{
+    return QString();
+}
+
+
 int
 Utils::_handle_check_target_env_call_error( int ec, const QString& cmd) const
 {
