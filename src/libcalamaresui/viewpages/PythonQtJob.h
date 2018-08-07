@@ -28,6 +28,7 @@
 namespace Calamares
 {
 class PythonQtViewStep;
+class PythonQtJobModule;
 }
 
 class PythonQtJob : public Calamares::Job
@@ -42,10 +43,18 @@ public:
     Calamares::JobResult exec() override;
 
 private:
+    /** @brief Constructor for jobs in PythonQt style, via ViewStep.jobs() */
     explicit PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
                           PythonQtObjectPtr pyJob,
                           QObject* parent = nullptr );
-    friend class Calamares::PythonQtViewStep; // only this one can call the ctor
+    /** @brief Constructor for jobs in (old) Python style, via run() */
+    explicit PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
+                          QObject* parent = nullptr );
+    friend class Calamares::PythonQtViewStep;  // only these two can call the ctor
+    friend class Calamares::PythonQtJobModule;
+
+    Calamares::JobResult execPythonQtStyle();
+    Calamares::JobResult execBoostStyle();
 
     CalamaresUtils::PythonQtModulePtr m_pythonModule;
     PythonQtObjectPtr m_pyJob;

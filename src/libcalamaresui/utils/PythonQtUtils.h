@@ -56,6 +56,11 @@ public:
                             const QVariantList& args = QVariantList(),
                             const QVariantMap& kwargs = QVariantMap() );
 
+    // Calls a method on the module itself instead of on an object.
+    QVariant lookupAndCall( const QStringList& candidateNames,
+                            const QVariantList& args = QVariantList(),
+                            const QVariantMap& kwargs = QVariantMap() );
+
 protected:
     ::PythonQtObjectPtr m_module;
     QString m_moduleName;

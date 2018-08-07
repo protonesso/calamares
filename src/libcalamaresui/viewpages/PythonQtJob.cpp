@@ -18,6 +18,7 @@
 
 #include "PythonQtJob.h"
 
+#include "utils/Logger.h"
 #include "utils/PythonQtUtils.h"
 
 PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
@@ -27,7 +28,14 @@ PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
     , m_pythonModule( module )
     , m_pyJob( pyJob )
 {
+}
 
+PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
+                          QObject* parent )
+    : Calamares::Job( parent )
+    , m_pythonModule( module )
+    , m_pyJob()
+{
 }
 
 
@@ -62,8 +70,12 @@ PythonQtJob::prettyStatusMessage() const
 
 
 Calamares::JobResult
-PythonQtJob::exec()
+PythonQtJob::execPythonQtStyle()
 {
+    Q_ASSERT( !m_pyJob.isNull() );
+
+    // If m_pyJob is null, this returns null, and it looks like
+    // it succeeds -- this should be prevented by exec() or the Q_ASSERT
     QVariant response = m_pythonModule->lookupAndCall( m_pyJob, { "exec" } );
     if ( response.isNull() )
         return Calamares::JobResult::ok();
@@ -74,4 +86,32 @@ PythonQtJob::exec()
 
     return Calamares::JobResult::error( map.value( "message" ).toString(),
                                         map.value( "details" ).toString() );
+}
+
+Calamares::JobResult
+PythonQtJob::execBoostStyle()
+{
+    Q_ASSERT( m_pyJob.isNull() );
+
+    QVariant response = m_pythonModule->lookupAndCall( { "run" } );
+    if ( response.isNull() )
+        return Calamares::JobResult::ok();
+
+    cWarning() << response;
+    QVariantMap map = response.toMap();
+    if ( map.isEmpty() || map.value( "ok" ).toBool() )
+        return Calamares::JobResult::ok();
+
+    return Calamares::JobResult::error( map.value( "message" ).toString(),
+                                        map.value( "details" ).toString() );
+}
+
+
+Calamares::JobResult
+PythonQtJob::exec()
+{
+    if ( m_pyJob.isNull() )
+        return execBoostStyle();
+    else
+        return execPythonQtStyle();
 }

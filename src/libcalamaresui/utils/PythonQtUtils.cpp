@@ -51,6 +51,12 @@ PythonQtModule::lookupAndCall( PythonQtObjectPtr object,
     return PythonQt::self()->call( object, candidateNames.first(), args, kwargs );
 }
 
+QVariant PythonQtModule::lookupAndCall(const QStringList& candidateNames, const QVariantList& args, const QVariantMap& kwargs)
+{
+    return lookupAndCall( m_module, candidateNames, args, kwargs );
+}
+
+
 PythonQtModule::PythonQtModule(const QString& name)
     : m_module( PythonQt::self()->createModuleFromScript( name ) )
     , m_moduleName( name )

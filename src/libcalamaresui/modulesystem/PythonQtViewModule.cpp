@@ -26,6 +26,7 @@
 #include "ViewManager.h"
 #include "CalamaresConfig.h"
 #include "viewpages/PythonQtGlobalStorageWrapper.h"
+#include "viewpages/PythonQtJob.h"
 #include "viewpages/PythonQtUtilsWrapper.h"
 #include "GlobalStorage.h"
 #include "JobQueue.h"
@@ -123,8 +124,7 @@ PythonQtJobModule::~PythonQtJobModule()
 JobList
 PythonQtJobModule::jobs() const
 {
-    cWarning() << "Unimplemented";
-    return JobList();
+    return JobList() << Calamares::job_ptr( new PythonQtJob( m_pythonModule) );
 }
 
 void
