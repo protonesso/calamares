@@ -23,6 +23,10 @@ website will have to do for older versions.
    descriptors have been revamped and now self-document in the log.
  * A new `ci/RELEASE.sh` script has been added to streamline releases;
    it is not guaranteed to work anywhere in particular though.
+ * PythonQt can now be used for "plain" Python job modules, which
+   means that only one set of Python bindings needs to be used for
+   Calamares (Boost.Python for job-modules only, or PythonQt for
+   both jobs and view-modules).
 
 == Modules ==
 
