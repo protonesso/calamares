@@ -7,6 +7,7 @@ calamares_add_plugin( preservefiles
         PreserveFiles.cpp
     LINK_PRIVATE_LIBRARIES
         calamares
+    # REQUIRES mount  # To set the rootMountPoint
     SHARED_LIB
     EMERGENCY
 )
