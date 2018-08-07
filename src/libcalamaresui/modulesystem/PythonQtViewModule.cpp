@@ -98,6 +98,55 @@ PythonQtViewModule::~PythonQtViewModule()
 
 
 
+Module::Type
+PythonQtJobModule::type() const
+{
+    return Job;
+}
+
+
+Module::Interface
+PythonQtJobModule::interface() const
+{
+    return PythonInterface;
+}
+
+PythonQtJobModule::PythonQtJobModule()
+    : PythonQtModuleBase()
+{
+}
+
+PythonQtJobModule::~PythonQtJobModule()
+{
+}
+
+JobList
+PythonQtJobModule::jobs() const
+{
+    cWarning() << "Unimplemented";
+    return JobList();
+}
+
+void
+PythonQtJobModule::loadSelf()
+{
+    if ( !m_scriptFileName.isEmpty() )
+    {
+        loadScript();
+        if ( !m_pythonModule->viewClass().isEmpty() )
+        {
+            cWarning() << "Python Job defines a View class in" << instanceKey();
+        }
+
+        m_loaded = true;
+        cDebug() << "PythonQtJobModule" << instanceKey() << "loading complete.";
+    }
+}
+
+
+
+
+
 PythonQtModuleBase::PythonQtModuleBase()
     : Module()
 {

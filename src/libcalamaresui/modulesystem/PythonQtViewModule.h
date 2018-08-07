@@ -60,6 +60,21 @@ private:
     ViewStep* m_viewStep = nullptr;
 };
 
+class UIDLLEXPORT PythonQtJobModule : public PythonQtModuleBase
+{
+public:
+    Type type() const override;
+    Interface interface() const override;
+
+    void loadSelf() override;
+    JobList jobs() const override;
+
+private:
+    friend class Module; //so only the superclass can instantiate
+    explicit PythonQtJobModule();
+    virtual ~PythonQtJobModule();
+};
+
 } // namespace Calamares
 
 #endif // CALAMARES_PYTHONQTVIEWMODULE_H
