@@ -221,6 +221,12 @@ void PythonQtModuleBase::loadScript()
                 cDebug() << "PythonQt ERR>" << message;
             }
         );
+
+        auto libcala = PythonQt::self()->createModuleFromScript( "libcalamares" );
+        if ( libcala.isNull() || PythonQt::self()->hadError() )
+            cWarning() << "Populating libcalamares failed.";
+        else
+            libcala.addObject( "utils", s_utils );
     }
 
     QDir workingDir( m_workingPath );
