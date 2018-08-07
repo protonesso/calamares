@@ -20,8 +20,8 @@ There are two types of Calamares module:
 There are three (four) interfaces for Calamares modules:
 * qtplugin,
 * python (jobmodules only),
-* pythonqt (optional),
-* process (jobmodules only).
+* process (jobmodules only),
+* pythonqt (optional, jobmodules and viewmodules).
 
 # Module directory
 
@@ -85,7 +85,7 @@ Modules may use one of the python interfaces, which may be present
 in a Calamares installation (but also may not be). These modules must have
 a `module.desc` file. The Python script must implement one or more of the
 Python interfaces for Calamares -- either the python jobmodule interface,
-or the experimental pythonqt job- and viewmodule interfaces.
+or the pythonqt job- and viewmodule interfaces.
 
 To add a Python or process jobmodule, put it in a subdirectory and make sure
 it has a `module.desc`. It will be picked up automatically by our CMake magic.
@@ -99,9 +99,8 @@ functionality is exposed as `libcalamares.job` for job data,
 `libcalamares.globalstorage` for shared data and `libcalamares.utils` for
 generic utility functions. Documentation is inline.
 
-All code in Python job modules must obey PEP8, the only exception are
-`libcalamares.globalstorage` keys, which should always be
-camelCaseWithLowerCaseInitial to match the C++ identifier convention.
+The keys in `libcalamares.globalstorage` follow C++ identifier conventions,
+not Python conventions, and so are *camelCaseWithLowerCaseInitial*.
 
 For testing and debugging we provide the `testmodule.py` script which
 fakes a limited Calamares Python environment for running a single jobmodule.
@@ -115,12 +114,12 @@ description if something went wrong.
 
 ### PythonQt Jobmodule
 
-A PythonQt jobmodule implements the experimental Job interface by defining
+A PythonQt jobmodule implements the Job interface by defining
 a subclass of something.
 
 ### PythonQt Viewmodule
 
-A PythonQt viewmodule implements the experimental View interface by defining
+A PythonQt viewmodule implements the View interface by defining
 a subclass of something.
 
 ## Process jobmodules
@@ -150,4 +149,4 @@ A module that is marked as an emergency module in its module.desc
 must **also** set the *emergency* key to *true* in its configuration file.
 If it does not, the module is not considered to be an emergency module
 after all (this is so that you can have modules that have several
-instances, only some of which are actually needed for emergencies.
+instances, only some of which are actually needed for emergencies).
