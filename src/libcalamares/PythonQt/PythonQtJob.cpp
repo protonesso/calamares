@@ -111,10 +111,40 @@ PythonQtJob::execBoostStyle()
         return Calamares::JobResult::error( tr( "Bad PythonQt error type" ), response.toString() );
 }
 
+PythonQtJobInterface::PythonQtJobInterface()
+{
+    PythonQtObjectPtr cala = PythonQt::self()->importModule( "libcalamares" );
+    PythonQt::self()->addObject( cala, "job", this );
+}
+
+PythonQtJobInterface::~PythonQtJobInterface()
+{
+    PythonQtObjectPtr cala = PythonQt::self()->importModule( "libcalamares" );
+    PythonQt::self()->removeVariable( cala, "job" );
+}
+
+QString PythonQtJobInterface::prettyName() const
+{
+    return "Unknown pretty_name";
+}
+
+QString PythonQtJobInterface::workingPath() const
+{
+    return "Unknown working_path";
+}
+
+QString PythonQtJobInterface::moduleName() const
+{
+    return "Unknown module_name";
+}
+
+
 
 Calamares::JobResult
 PythonQtJob::exec()
 {
+    PythonQtJobInterface job;
+
     if ( m_pyJob.isNull() )
         return execBoostStyle();
     else

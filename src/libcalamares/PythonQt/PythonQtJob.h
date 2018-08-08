@@ -31,6 +31,36 @@ class PythonQtViewStep;
 class PythonQtJobModule;
 }
 
+/** @brief Interface exposed to Python as libcalamares.job
+ *
+ * This is the PythonQt implementation of PythonJobApi.h,
+ * which is visible in Python as libcalamares.job for
+ * Boost.Python-style jobs.
+ */
+class PythonQtJobInterface : public QObject
+{
+    Q_OBJECT
+public:
+    PythonQtJobInterface();
+    ~PythonQtJobInterface();
+
+    Q_PROPERTY( QString pretty_name READ prettyName );
+    Q_PROPERTY( QString working_path READ workingPath );
+    Q_PROPERTY( QString module_name READ moduleName );
+
+public slots:
+    QString prettyName() const;
+    QString workingPath() const;
+    QString moduleName() const;
+} ;
+
+/** @brief Job for running Python code via PythonQt
+ *
+ * This Job can handle "new style" jobs, which come
+ * from the jobs() method of a PythonQt View, and
+ * also Boost.Python style jobs, with a run() method
+ * in the Python module.
+ */
 class PythonQtJob : public Calamares::Job
 {
     Q_OBJECT
