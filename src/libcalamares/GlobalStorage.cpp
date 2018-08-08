@@ -27,7 +27,7 @@
 #include <QJsonDocument>
 
 #ifdef WITH_PYTHONBOOST
-#include "PythonHelper.h"
+#include "PythonBoost/PythonHelper.h"
 
 
 #undef slots

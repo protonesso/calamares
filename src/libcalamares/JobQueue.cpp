@@ -24,9 +24,6 @@
 #include "utils/Logger.h"
 
 #include "CalamaresConfig.h"
-#ifdef WITH_PYTHONBOOST
-#include "PythonHelper.h"
-#endif
 
 #include <QThread>
 

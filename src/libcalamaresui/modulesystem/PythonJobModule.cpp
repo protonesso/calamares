@@ -18,7 +18,7 @@
 
 #include "PythonJobModule.h"
 
-#include "PythonJob.h"
+#include "PythonBoost/PythonJob.h"
 
 #include <QDir>
 
