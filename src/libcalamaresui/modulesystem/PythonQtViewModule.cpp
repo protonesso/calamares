@@ -25,11 +25,13 @@
 #include "viewpages/PythonQtViewStep.h"
 #include "ViewManager.h"
 #include "CalamaresConfig.h"
+#include "CalamaresVersion.h"
+#include "GlobalStorage.h"
+#include "JobQueue.h"
+
 #include "PythonQt/PythonQtGlobalStorageWrapper.h"
 #include "PythonQt/PythonQtJob.h"
 #include "PythonQt/PythonQtUtilsWrapper.h"
-#include "GlobalStorage.h"
-#include "JobQueue.h"
 
 #include <PythonQt.h>
 #include <PythonQt_QtAll.h>
@@ -226,7 +228,15 @@ void PythonQtModuleBase::loadScript()
         if ( libcala.isNull() || PythonQt::self()->hadError() )
             cWarning() << "Populating libcalamares failed.";
         else
+        {
             libcala.addObject( "utils", s_utils );
+            libcala.addVariable( "ORGANIZATION_NAME", CALAMARES_ORGANIZATION_NAME );
+            libcala.addVariable( "ORGANIZATION_DOMAIN", CALAMARES_ORGANIZATION_DOMAIN );
+            libcala.addVariable( "APPLICATION_NAME", CALAMARES_APPLICATION_NAME );
+            libcala.addVariable( "VERSION", CALAMARES_VERSION );
+            libcala.addVariable( "VERSION_SHORT", CALAMARES_VERSION_SHORT );
+
+        }
     }
 
     QDir workingDir( m_workingPath );

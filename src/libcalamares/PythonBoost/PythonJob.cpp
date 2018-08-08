@@ -61,6 +61,10 @@ BOOST_PYTHON_MODULE( libcalamares )
     bp::object package = bp::scope();
     package.attr( "__path__" ) = "libcalamares";
 
+    // Keep these attributes and functions (in the Python
+    // module called libcalamares) in-sync with the same
+    // ones from PythonQtViewModule.cpp
+    //
     bp::scope().attr( "ORGANIZATION_NAME" ) = CALAMARES_ORGANIZATION_NAME;
     bp::scope().attr( "ORGANIZATION_DOMAIN" ) = CALAMARES_ORGANIZATION_DOMAIN;
     bp::scope().attr( "APPLICATION_NAME" ) = CALAMARES_APPLICATION_NAME;
