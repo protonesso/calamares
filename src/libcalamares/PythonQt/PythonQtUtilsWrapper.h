@@ -69,7 +69,7 @@ public slots:
 
     QString obscure( const QString& string ) const;
 
-    QString gettext_path() const;
+    QVariant gettext_path() const;
     QStringList gettext_languages();
 
 private:

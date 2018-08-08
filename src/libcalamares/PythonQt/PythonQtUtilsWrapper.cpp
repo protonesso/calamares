@@ -134,10 +134,14 @@ Utils::obscure( const QString& string ) const
 }
 
 
-QString
+QVariant
 Utils::gettext_path() const
 {
-    return CalamaresPython::Gettext::path();
+    QString path( CalamaresPython::Gettext::path() );
+    if ( path.isEmpty() )
+        return QVariant();
+    else
+        return QVariant( path );
 }
 
 
