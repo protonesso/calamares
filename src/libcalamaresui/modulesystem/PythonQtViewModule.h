@@ -22,7 +22,7 @@
 #include "UiDllMacro.h"
 #include "Module.h"
 
-#include "utils/PythonQtUtils.h"
+#include "PythonQt/PythonQtUtils.h"
 
 namespace Calamares
 {

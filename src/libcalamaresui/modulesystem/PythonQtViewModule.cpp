@@ -25,9 +25,9 @@
 #include "viewpages/PythonQtViewStep.h"
 #include "ViewManager.h"
 #include "CalamaresConfig.h"
-#include "viewpages/PythonQtGlobalStorageWrapper.h"
-#include "viewpages/PythonQtJob.h"
-#include "viewpages/PythonQtUtilsWrapper.h"
+#include "PythonQt/PythonQtGlobalStorageWrapper.h"
+#include "PythonQt/PythonQtJob.h"
+#include "PythonQt/PythonQtUtilsWrapper.h"
 #include "GlobalStorage.h"
 #include "JobQueue.h"
 

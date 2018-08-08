@@ -19,7 +19,7 @@
 #include "PythonQtJob.h"
 
 #include "utils/Logger.h"
-#include "utils/PythonQtUtils.h"
+#include "PythonQtUtils.h"
 
 PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
                           PythonQtObjectPtr pyJob,

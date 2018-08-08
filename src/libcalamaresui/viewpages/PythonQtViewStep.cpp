@@ -18,10 +18,12 @@
  */
 
 #include "PythonQtViewStep.h"
-#include "utils/Logger.h"
 #include "utils/CalamaresUtilsGui.h"
-#include "utils/PythonQtUtils.h"
-#include "viewpages/PythonQtJob.h"
+#include "utils/Logger.h"
+#include "utils/Retranslator.h"
+
+#include "PythonQt/PythonQtJob.h"
+#include "PythonQt/PythonQtUtils.h"
 
 #ifdef HAVE_PYTHONQT_CONSOLE
 #include <gui/PythonQtScriptingConsole.h>
@@ -33,6 +35,44 @@
 
 namespace Calamares
 {
+
+::PythonQtObjectPtr
+PythonQtViewStep::createViewStep(QWidget* parent)
+{
+    auto viewClass = m_pythonModule->viewClass();
+    if ( viewClass.isEmpty() )
+    {
+        cError() << "No view class name set by module" << m_pythonModule->name();
+        return nullptr;
+    }
+    if ( !PythonQt::self() )
+    {
+        cError() << "PythonQt not initialized";
+        return nullptr;
+    }
+
+    // Instantiate an object of the class marked with @calamares_module and
+    // store it as _calamares_module.
+    PythonQt::self()->evalScript( m_pythonModule->m_module, QString( "_calamares_module = %1()" ).arg( viewClass ) );
+    auto obj = PythonQt::self()->lookupObject( m_pythonModule->m_module, "_calamares_module" );
+
+    if ( obj.isNull() )
+    {
+        cError() << "Could not create view step from" << viewClass;
+        return nullptr;
+    }
+
+    obj.addObject( "_basewidget", parent );
+    PythonQt::self()->evalScript( m_pythonModule->m_module, QStringLiteral( "_calamares_module._basewidget.layout().addWidget(_calamares_module.widget())" ) );
+
+    CALAMARES_RETRANSLATE_WIDGET( parent,
+        m_pythonModule->lookupAndCall( obj,
+                                       { "retranslate" },
+                                       { CalamaresUtils::translatorLocaleName() } );
+    )
+
+    return obj;
+}
 
 PythonQtViewStep::PythonQtViewStep( CalamaresUtils::PythonQtModulePtr module,
                                     QObject* parent )
@@ -46,7 +86,7 @@ PythonQtViewStep::PythonQtViewStep( CalamaresUtils::PythonQtModulePtr module,
     m_widget->setLayout( new QVBoxLayout );
     CalamaresUtils::unmarginLayout( m_widget->layout() );
 
-    m_obj = module->createViewStep( m_widget );
+    m_obj = createViewStep( m_widget );
 }
 
 

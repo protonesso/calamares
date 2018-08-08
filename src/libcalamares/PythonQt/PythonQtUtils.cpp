@@ -24,7 +24,6 @@
 
 #include <QMutex>
 #include <QThread>
-#include <QWidget>
 
 namespace CalamaresUtils
 {
@@ -91,43 +90,6 @@ PythonQtModule::load(const QString& modulePath)
     // The @calamares_module decorator should have filled _calamares_module_typename
     // for us.
     m_viewclassName = m_module.getVariable( "_calamares_module_typename" ).toString();
-}
-
-::PythonQtObjectPtr
-PythonQtModule::createViewStep(QWidget* parent)
-{
-    if ( m_viewclassName.isEmpty() )
-    {
-        cError() << "No view class name set by module" << m_moduleName;
-        return nullptr;
-    }
-    if ( !PythonQt::self() )
-    {
-        cError() << "PythonQt not initialized";
-        return nullptr;
-    }
-
-    // Instantiate an object of the class marked with @calamares_module and
-    // store it as _calamares_module.
-    PythonQt::self()->evalScript( m_module, QString( "_calamares_module = %1()" ).arg( m_viewclassName ) );
-    auto obj = PythonQt::self()->lookupObject( m_module, "_calamares_module" );
-
-    if ( obj.isNull() )
-    {
-        cError() << "Could not create view step from" << m_viewclassName;
-        return nullptr;
-    }
-
-    obj.addObject( "_basewidget", parent );
-    PythonQt::self()->evalScript( m_module, QStringLiteral( "_calamares_module._basewidget.layout().addWidget(_calamares_module.widget())" ) );
-
-    CALAMARES_RETRANSLATE_WIDGET( parent,
-        this->lookupAndCall( obj,
-                                       { "retranslate" },
-                                       { CalamaresUtils::translatorLocaleName() } );
-    )
-
-    return obj;
 }
 
 }

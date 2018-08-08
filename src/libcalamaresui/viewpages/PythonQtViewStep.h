@@ -21,7 +21,7 @@
 
 #include "ViewStep.h"
 
-#include "utils/PythonQtUtils.h"
+#include "PythonQt/PythonQtUtils.h"
 
 #include <PythonQt.h>
 
@@ -60,6 +60,8 @@ protected:
     QWidget* m_widget;
 
 private:
+    ::PythonQtObjectPtr createViewStep( QWidget* parent );
+
     CalamaresUtils::PythonQtModulePtr m_pythonModule;
     PythonQtObjectPtr m_obj;
 };

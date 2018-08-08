@@ -46,9 +46,9 @@ include_directories(
 if( WITH_PYTHONBOOST )
     set( libSources
         ${libSources}
-        PythonHelper.cpp
-        PythonJob.cpp
-        PythonJobApi.cpp
+        PythonBoost/PythonHelper.cpp
+        PythonBoost/PythonJob.cpp
+        PythonBoost/PythonJobApi.cpp
     )
     set_source_files_properties( PythonJob.cpp
         PROPERTIES COMPILE_FLAGS "${SUPPRESS_BOOST_WARNINGS}"
@@ -68,6 +68,14 @@ if( WITH_PYTHONBOOST )
 endif()
 
 if( WITH_PYTHONQT )
+    set( libSources
+        ${libSources}
+        PythonQt/PythonQtGlobalStorageWrapper.cpp
+        PythonQt/PythonQtJob.cpp
+        PythonQt/PythonQtUtils.cpp
+        PythonQt/PythonQtUtilsWrapper.cpp
+    )
+
     include_directories(${PYTHON_INCLUDE_DIRS})
     link_directories(${PYTHON_LIBRARIES})
 

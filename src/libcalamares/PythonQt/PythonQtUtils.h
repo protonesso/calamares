@@ -25,6 +25,10 @@
 #include <QSharedPointer>
 #include <QVariant>
 
+namespace Calamares
+{
+    class PythonQtViewStep;
+}
 
 namespace CalamaresUtils
 {
@@ -47,8 +51,6 @@ public:
     /** @brief Load the given Python file (e.g. path to main.py) */
     void load( const QString& modulePath );
 
-    ::PythonQtObjectPtr createViewStep( QWidget* parent );
-
     //NOTE: when running this, it is assumed that Python is initialized and
     //      PythonQt::self() is valid.
     QVariant lookupAndCall( PythonQtObjectPtr object,
@@ -62,6 +64,8 @@ public:
                             const QVariantMap& kwargs = QVariantMap() );
 
 protected:
+    friend class Calamares::PythonQtViewStep;
+
     ::PythonQtObjectPtr m_module;
     QString m_moduleName;
     QString m_viewclassName;

@@ -21,7 +21,7 @@
 
 #include "Job.h"
 
-#include "utils/PythonQtUtils.h"
+#include "PythonQtUtils.h"
 
 #include <PythonQt.h>
 
