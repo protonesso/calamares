@@ -18,6 +18,8 @@
 
 #include "PythonQtUtilsWrapper.h"
 
+#include "PythonGettext.h"
+
 #include "utils/CalamaresUtilsSystem.h"
 #include "utils/CalamaresUtils.h"
 #include "utils/Logger.h"
@@ -135,7 +137,14 @@ Utils::obscure( const QString& string ) const
 QString
 Utils::gettext_path() const
 {
-    return QString();
+    return CalamaresPython::Gettext::path();
+}
+
+
+QStringList
+Utils::gettext_languages()
+{
+    return CalamaresPython::Gettext::languages();
 }
 
 

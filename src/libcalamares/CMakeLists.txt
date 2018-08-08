@@ -46,6 +46,7 @@ include_directories(
 if( WITH_PYTHONBOOST )
     set( libSources
         ${libSources}
+        PythonGettext.cpp
         PythonBoost/PythonHelper.cpp
         PythonBoost/PythonJob.cpp
         PythonBoost/PythonJobApi.cpp
@@ -70,6 +71,7 @@ endif()
 if( WITH_PYTHONQT )
     set( libSources
         ${libSources}
+        PythonGettext.cpp
         PythonQt/PythonQtGlobalStorageWrapper.cpp
         PythonQt/PythonQtJob.cpp
         PythonQt/PythonQtUtils.cpp
