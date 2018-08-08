@@ -63,6 +63,8 @@ public:
                             const QVariantList& args = QVariantList(),
                             const QVariantMap& kwargs = QVariantMap() );
 
+    ::PythonQtObjectPtr lookupCallable( const QString& name );
+
 protected:
     friend class Calamares::PythonQtViewStep;
 

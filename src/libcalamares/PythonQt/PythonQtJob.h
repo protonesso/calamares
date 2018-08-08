@@ -29,7 +29,7 @@ namespace Calamares
 {
 class PythonQtViewStep;
 class PythonQtJobModule;
-}
+class PythonQtJob;
 
 /** @brief Interface exposed to Python as libcalamares.job
  *
@@ -41,17 +41,21 @@ class PythonQtJobInterface : public QObject
 {
     Q_OBJECT
 public:
-    PythonQtJobInterface();
+    PythonQtJobInterface( PythonQtJob* );  // PythonQt (new-style)
+    PythonQtJobInterface( CalamaresUtils::PythonQtModulePtr );  // Boost.Python style
     ~PythonQtJobInterface();
 
-    Q_PROPERTY( QString pretty_name READ prettyName );
-    Q_PROPERTY( QString working_path READ workingPath );
-    Q_PROPERTY( QString module_name READ moduleName );
+    Q_PROPERTY( QString pretty_name MEMBER m_prettyName );
+    Q_PROPERTY( QString working_path );
+    Q_PROPERTY( QString module_name );
 
-public slots:
-    QString prettyName() const;
-    QString workingPath() const;
-    QString moduleName() const;
+private:
+    PythonQtJobInterface();
+
+    PythonQtJob *m_job;
+    CalamaresUtils::PythonQtModulePtr m_module;
+
+    QString m_prettyName;
 } ;
 
 /** @brief Job for running Python code via PythonQt
@@ -90,4 +94,5 @@ private:
     PythonQtObjectPtr m_pyJob;
 };
 
+} // namespace
 #endif // PYTHONQTJOB_H

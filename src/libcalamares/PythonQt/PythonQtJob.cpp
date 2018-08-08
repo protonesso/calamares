@@ -21,6 +21,9 @@
 #include "utils/Logger.h"
 #include "PythonQtUtils.h"
 
+namespace Calamares
+{
+
 PythonQtJob::PythonQtJob( CalamaresUtils::PythonQtModulePtr module,
                           PythonQtObjectPtr pyJob,
                           QObject* parent )
@@ -111,10 +114,51 @@ PythonQtJob::execBoostStyle()
         return Calamares::JobResult::error( tr( "Bad PythonQt error type" ), response.toString() );
 }
 
+Calamares::JobResult
+PythonQtJob::exec()
+{
+    if ( m_pyJob.isNull() )
+    {
+        PythonQtJobInterface job( m_pythonModule );
+        return execBoostStyle();
+    }
+    else
+    {
+        PythonQtJobInterface job( this );
+        return execPythonQtStyle();
+    }
+}
+
+
 PythonQtJobInterface::PythonQtJobInterface()
 {
     PythonQtObjectPtr cala = PythonQt::self()->importModule( "libcalamares" );
     PythonQt::self()->addObject( cala, "job", this );
+}
+
+PythonQtJobInterface::PythonQtJobInterface( PythonQtJob* job )
+    : PythonQtJobInterface()
+{
+    m_prettyName = job->prettyName();
+}
+
+PythonQtJobInterface::PythonQtJobInterface( CalamaresUtils::PythonQtModulePtr module )
+    : PythonQtJobInterface()
+{
+    m_prettyName = module->lookupAndCall( {"pretty_name"} ).toString().trimmed();
+    if ( m_prettyName.isEmpty() )
+    {
+        PythonQtObjectPtr callable = module->lookupCallable( "run" );
+        QString doc = PythonQt::self()->getVariable( callable, "__doc__" ).toString().trimmed();
+        auto i_newline = doc.indexOf('\n');
+        if ( i_newline > 0 )
+            doc.truncate( i_newline );
+        if ( doc.isEmpty() )
+            m_prettyName = tr( "PythonQt job" );
+        else
+            m_prettyName = doc;
+        cDebug() << "No pretty_name found, using run.__doc__=" << m_prettyName;
+    }
 }
 
 PythonQtJobInterface::~PythonQtJobInterface()
@@ -123,30 +167,4 @@ PythonQtJobInterface::~PythonQtJobInterface()
     PythonQt::self()->removeVariable( cala, "job" );
 }
 
-QString PythonQtJobInterface::prettyName() const
-{
-    return "Unknown pretty_name";
-}
-
-QString PythonQtJobInterface::workingPath() const
-{
-    return "Unknown working_path";
-}
-
-QString PythonQtJobInterface::moduleName() const
-{
-    return "Unknown module_name";
-}
-
-
-
-Calamares::JobResult
-PythonQtJob::exec()
-{
-    PythonQtJobInterface job;
-
-    if ( m_pyJob.isNull() )
-        return execBoostStyle();
-    else
-        return execPythonQtStyle();
 }
