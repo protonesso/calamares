@@ -97,13 +97,18 @@ PythonQtJob::execBoostStyle()
     if ( response.isNull() )
         return Calamares::JobResult::ok();
 
-    cWarning() << response;
-    QVariantMap map = response.toMap();
-    if ( map.isEmpty() || map.value( "ok" ).toBool() )
-        return Calamares::JobResult::ok();
+    if ( response.canConvert( QVariant::StringList ) )
+    {
+        QStringList errors = response.toStringList();
+        if ( errors.length() == 2 )
+        {
+            return Calamares::JobResult::error( errors[0], errors[1] );
+        }
 
-    return Calamares::JobResult::error( map.value( "message" ).toString(),
-                                        map.value( "details" ).toString() );
+        return Calamares::JobResult::error( tr( "Unknown PythonQt error" ), errors.join( '\n' ) );
+    }
+    else
+        return Calamares::JobResult::error( tr( "Bad PythonQt error type" ), response.toString() );
 }
 
 
