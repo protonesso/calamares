@@ -120,11 +120,13 @@ PythonQtJob::exec()
     if ( m_pyJob.isNull() )
     {
         PythonQtJobInterface job( m_pythonModule );
+        emit progress( 0 );
         return execBoostStyle();
     }
     else
     {
         PythonQtJobInterface job( this );
+        emit progress( 0 );
         return execPythonQtStyle();
     }
 }
