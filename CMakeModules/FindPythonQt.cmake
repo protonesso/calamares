@@ -192,7 +192,5 @@ if(PYTHONQT_FOUND)
 
     if ( NOT _qtall_header )
         message( FATAL_ERROR "No PythonQt_QtAll.h found." )
-    else()
-        message( STATUS "PythonQt_QtAll.h found in ${_qtall_header}" )
     endif()
 endif()
