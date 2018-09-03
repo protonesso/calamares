@@ -4,7 +4,8 @@
 #
 # Also sets:
 #   - HAVE_PYTHONQT_CONSOLE if the scripting console headers are found
-#   - PYTHONQT_INCLUDE_DIRS
+#   - PYTHONQT_INCLUDE_DIRS to add whatever directories
+#     that are needed for extensions.
 #
 
 # Python is required
@@ -28,22 +29,38 @@ string(REGEX REPLACE
 )
 
 if(NOT EXISTS "${PYTHONQT_INSTALL_DIR}")
-  find_path(PYTHONQT_INSTALL_DIR include/PythonQt/PythonQt.h DOC "Directory where PythonQt was installed.")
+    find_path(PYTHONQT_INSTALL_DIR
+        NAMES
+            include/PythonQt/PythonQt.h
+            include/PythonQt5/PythonQt.h
+        DOC "Directory where PythonQt was installed.")
 endif()
+
 # XXX Since PythonQt 3.0 is not yet cmakeified, depending
 #     on how PythonQt is built, headers will not always be
 #     installed in "include/PythonQt". That is why "src"
 #     is added as an option. See [1] for more details.
 #     [1] https://github.com/commontk/CTK/pull/538#issuecomment-86106367
 find_path(PYTHONQT_INCLUDE_DIR PythonQt.h
-  PATHS "${PYTHONQT_INSTALL_DIR}/include/PythonQt"
+    PATHS
+        "${PYTHONQT_INSTALL_DIR}/include/PythonQt"
+        "${PYTHONQT_INSTALL_DIR}/include/PythonQt5"
         "${PYTHONQT_INSTALL_DIR}/src"
-  DOC "Path to the PythonQt include directory")
+    DOC "Path to the PythonQt include directory")
+find_path(PYTHONQT_ALL_INCLUDE_DIR PythonQt_QtAll.h
+    PATHS
+        "${PYTHONQT_INCLUDE_DIR}"
+        "${PYTHONQT_INSTALL_DIR}"
+    PATH_SUFFIXES
+        "extensions/PythonQt_QtAll"
+        "src"
+    DOC "Path to the PythonQt 'all' header")
 
 if ( NOT PythonQt_FIND_QUIETLY )
     message( STATUS "Searching for PythonQt (PythonLibs ${PYTHONLIBS_MAJMIN}) .." )
     if ( PYTHONQT_INCLUDE_DIR )
         message( STATUS "  .. found include ${PYTHONQT_INCLUDE_DIR}" )
+        message( STATUS "  .. found all include ${PYTHONQT_ALL_INCLUDE_DIR}" )
     endif()
 endif()
 
@@ -144,6 +161,9 @@ if(PYTHONQT_INCLUDE_DIR AND PYTHONQT_LIBRARY AND PYTHONQT_QTALL_LIBRARY)
   set(PythonQt_FOUND ${PYTHONQT_FOUND})
   set(PYTHONQT_LIBRARIES ${PYTHONQT_LIBRARY} ${PYTHONQT_LIBUTIL} ${PYTHONQT_QTALL_LIBRARY})
   set(PYTHONQT_INCLUDE_DIRS ${PYTHONQT_INCLUDE_DIR})
+  if(PYTHONQT_ALL_INCLUDE_DIR)
+    list(APPEND PYTHONQT_INCLUDE_DIRS ${PYTHONQT_ALL_INCLUDE_DIR})
+  endif()
 elseif(NOT PythonQt_FIND_QUIETLY)
   set(_missing "")
   if (NOT PYTHONQT_INCLUDE_DIR)
@@ -165,17 +185,14 @@ if(PYTHONQT_FOUND)
         HINTS
             ${PYTHONQT_INCLUDE_DIR}/extensions/PythonQt_QtAll/
             ${PYTHONQT_INCLUDE_DIR}
+            ${PYTHONQT_INCLUDE_DIRS}
     )
     message( STATUS "PythonQt:\n\tConsole ${HAVE_PYTHONQT_CONSOLE}\n\tAll     ${_qtall_header}" )
     file( RELATIVE_PATH _qtall_subdir ${PYTHONQT_INCLUDE_DIR} ${_qtall_header} )
 
     if ( NOT _qtall_header )
         message( FATAL_ERROR "No PythonQt_QtAll.h found." )
-    elseif ( _qtall_header STREQUAL "PythonQt_QtAll.h" )
-        # It's in the main include directory, nothing to do
-        message( STATUS "PythonQt_QtAll.h found in ${PYTHONQT_INCLUDE_DIR}" )
     else()
-        get_filename_component( _qtall_subdir "${_qtall_subdir}" DIRECTORY )
-        list( APPEND PYTHONQT_INCLUDE_DIRS ${PYTHONQT_INCLUDE_DIR}/${_qtall_subdir} )
+        message( STATUS "PythonQt_QtAll.h found in ${_qtall_header}" )
     endif()
 endif()
