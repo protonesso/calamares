@@ -3,13 +3,78 @@ contributors are listed. Note that Calamares does not have a historical
 changelog -- this log starts with version 3.2.0. The release notes on the
 website will have to do for older versions.
 
-# 3.2.3 (unreleased) #
+# 3.2.4 (unreleased) #
 
 This release contains contributions from (alphabetically by first name):
+ - Alf Gaida
+ - aliveafter1000
+ - Arnaud Ferraris
+ - Caio Carvalho
+ - Collabora LTD
+ - Kevin Kofler
+ - Philip Mueller
+ - Scott Harvey
 
 ## Core ##
 
+ * The Calamares application now recognizes the `-X` or `--xdg-config`
+   option, which adds XDG_DATA_DIRS to the places used to find QML
+   and branding directories, and XDG_CONFIG_DIRS to the places used
+   to find the global settings and module configurations. This allows
+   a more fine-grained, and more layered, approach to setting up
+   Calamares configurations (in particular, distro's can **add**
+   configuration files and give them priority, instead of **forking**
+   configuration files).
+
 ## Modules ##
+
+ * The *partition* module supports RAID devices, but only when Calamares
+   is compiled with the newest KPMCore release.
+ * The calculation of required space -- including swap -- has been simplified,
+   and Calamares no longer reserves 2GiB of space in calculations for internal
+   use (this means that it no longer mysteriously drops swap when the disk
+   size is close to the required installation size).
+ * The name of the type of default filesystem (e.g. ext4 or btrfs) is now handled
+   case- and localization-insensitively. This means that *btrfs* is now always
+   an acceptable spelling.
+ * The currently-selected disk device is remembered between manual partitioning
+   and the partitioning-overview pages. (Thanks to Arnaud)
+ * The *keyboard* module now handles the (bogus) Austrian keymap for
+   the system console properly. (Thanks to Kevin)
+ * The *preservefiles* module now has a mechanism for setting the permissions
+   (and ownership) of preserved files. (Thanks to Scott)
+ * New module *fsresizer* can be used to resize filesystems. It is intended
+   for use in OEM installs where an image of fixed size is created,
+   and then sized to the actual SD card the user has used.
+ * The *mount* module now handles missing *extraMounts* and *extraMountsEfi*
+   keys gracefully (this is probably a misconfiguration issue).
+ * The *packages* module now supports pre- and post-script options
+   for all operations, not just during install (keep in mind that
+   these run as three separate shells, though).
+
+
+# 3.2.3 (2019-01-09) #
+
+This release contains contributions from (alphabetically by first name):
+ - aliveafter1000
+
+## Core ##
+
+There are no core changes in this release.
+
+## Modules ##
+
+ * *partition* Fixed bug where, during detection of existing systems, the
+   existing system partitions may be mounted and then files deleted.
+   This is a **limited** version of the patch from aliveafter1000
+   that will be in 3.2.4, which tries harder to mount filesystems
+   read-only and unmodifiable.
+ * *locale* It was possible to set the installer and system language
+   (e.g. to German) while the global storage value for *locale*
+   remained set to English. Then no localization packages are installed
+   (see feature `${LOCALE}` in `packages.conf`). Reported downstream
+   in Netrunner.
+
 
 # 3.2.2 (2018-09-04) #
 

@@ -66,7 +66,7 @@ handle_args( QCoreApplication& a )
     parser.addOption( debugLevelOption );
     parser.addOption( gsOption );
     parser.addPositionalArgument( "module", "Path or name of module to run." );
-    parser.addPositionalArgument( "config", "(optional) Path of job config file.", "[config]" );
+    parser.addPositionalArgument( "config", "Path of job-config file to use.", "[config]");
 
     parser.process( a );
 
@@ -156,6 +156,8 @@ load_module( const ModuleConfig& moduleConfig )
         ? moduleDirectory + '/' + name + ".conf"
         : moduleConfig.configFile() );
 
+    cDebug() << "Module" << moduleName << "job-configuration:" << configFile;
+
     Calamares::Module* module = Calamares::Module::fromDescriptor(
         descriptor, name, configFile, moduleDirectory );
 
@@ -199,17 +201,27 @@ main( int argc, char* argv[] )
         return 1;
     }
 
-    cDebug() << "Module" << m->name() << m->typeString() << m->interfaceString();
+    using TR = Logger::DebugRow<const char*, const QString&>;
 
+    cDebug() << "Module metadata"
+        << TR( "name", m->name() )
+        << TR( "type", m->typeString() )
+        << TR( "interface", m->interfaceString() );
+
+    cDebug() << "Job outputs:";
     Calamares::JobList jobList = m->jobs();
     unsigned int count = 1;
     for ( const auto& p : jobList )
     {
-        cDebug() << count << p->prettyName();
+        cDebug() << "Job #" << count << "name" << p->prettyName();
         Calamares::JobResult r = p->exec();
         if ( !r )
-            cWarning() << "Job" << count << ".. failed:"
-                << Logger::DebugList( QStringList() << r.message() << r.details() );
+        {
+            using TR = Logger::DebugRow<QString, QString>;
+            cDebug() << count << ".. failed"
+                << TR( "summary", r.message() )
+                << TR( "details", r.details() );
+        }
         ++count;
     }
 

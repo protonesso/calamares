@@ -9,12 +9,12 @@
     <message>
         <location filename="../src/modules/partition/gui/BootInfoWidget.cpp" line="79"/>
         <source>This system was started with an &lt;strong&gt;EFI&lt;/strong&gt; boot environment.&lt;br&gt;&lt;br&gt;To configure startup from an EFI environment, this installer must deploy a boot loader application, like &lt;strong&gt;GRUB&lt;/strong&gt; or &lt;strong&gt;systemd-boot&lt;/strong&gt; on an &lt;strong&gt;EFI System Partition&lt;/strong&gt;. This is automatic, unless you choose manual partitioning, in which case you must choose it or create it on your own.</source>
-        <translation>Sistem ini telah dimulai dengan lingkungan boot &lt;strong&gt;EFI&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;Untuk mengkonfigurasi startup dari lingkungan EFI, pemasang ini seharusnya memaparkan sebuah aplikasi boot loader, seperti &lt;strong&gt;GRUB&lt;/strong&gt; atau &lt;strong&gt;systemd-boot&lt;/strong&gt; pada sebuah &lt;strong&gt;EFI System Partition&lt;/strong&gt;. Ini adalah otomatis, kecuali kalau kamu memilih pemartisian manual, dalam beberapa kasus kamu harus memilihnya atau menciptakannya pada milikmu.</translation>
+        <translation>Sistem ini telah dimulai dengan lingkungan boot &lt;strong&gt;EFI&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;Untuk mengkonfigurasi startup dari lingkungan EFI, installer ini seharusnya memaparkan sebuah aplikasi boot loader, seperti &lt;strong&gt;GRUB&lt;/strong&gt; atau &lt;strong&gt;systemd-boot&lt;/strong&gt; pada sebuah &lt;strong&gt;EFI System Partition&lt;/strong&gt;. Ini adalah otomatis, kecuali kalau kamu memilih pemartisian manual, dalam beberapa kasus kamu harus memilihnya atau menciptakannya pada milikmu.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/BootInfoWidget.cpp" line="91"/>
         <source>This system was started with a &lt;strong&gt;BIOS&lt;/strong&gt; boot environment.&lt;br&gt;&lt;br&gt;To configure startup from a BIOS environment, this installer must install a boot loader, like &lt;strong&gt;GRUB&lt;/strong&gt;, either at the beginning of a partition or on the &lt;strong&gt;Master Boot Record&lt;/strong&gt; near the beginning of the partition table (preferred). This is automatic, unless you choose manual partitioning, in which case you must set it up on your own.</source>
-        <translation>Sistem ini dimulai dengan sebuah lingkungan boot &lt;strong&gt;BIOS&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;Untuk mengkonfigurasi startup dari sebuah lingkungan BIOS, pemasang ini seharusnya memasang sebuah boot loader, seperti &lt;strong&gt;GRUB&lt;/strong&gt;, baik di awal partisi atau pada &lt;strong&gt;Master Boot Record&lt;/strong&gt; di dekat awalan tabel partisi (yang disukai). Ini adalah otomatis, kecuali kalau kamu memilih pemartisian manual, dalam beberapa kasus kamu harus menyetelnya pada milikmu.</translation>
+        <translation>Sistem ini dimulai dengan sebuah lingkungan boot &lt;strong&gt;BIOS&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;Untuk mengkonfigurasi startup dari sebuah lingkungan BIOS, installer ini seharusnya memasang sebuah boot loader, seperti &lt;strong&gt;GRUB&lt;/strong&gt;, baik di awal partisi atau pada &lt;strong&gt;Master Boot Record&lt;/strong&gt; di dekat awalan tabel partisi (yang disukai). Ini adalah otomatis, kecuali kalau kamu memilih pemartisian manual, dalam beberapa kasus kamu harus menyetelnya pada milikmu.</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../src/modules/partition/core/BootLoaderModel.cpp" line="111"/>
         <source>Do not install a boot loader</source>
-        <translation>Jangan pasang boot loader</translation>
+        <translation>Jangan instal boot loader</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/core/BootLoaderModel.cpp" line="125"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../src/libcalamaresui/ExecutionViewStep.cpp" line="79"/>
         <source>Install</source>
-        <translation>Pasang</translation>
+        <translation>Instal</translation>
     </message>
 </context>
 <context>
@@ -187,7 +187,7 @@
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="77"/>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="289"/>
         <source>Cancel installation without changing the system.</source>
-        <translation>Batal pemasangan tanpa mengubah sistem yang ada.</translation>
+        <translation>Batalkan instalasi tanpa mengubah sistem yang ada.</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="179"/>
@@ -197,7 +197,7 @@
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="180"/>
         <source>%1 can not be installed. Calamares was unable to load all of the configured modules. This is a problem with the way Calamares is being used by the distribution.</source>
-        <translation>%1 tidak dapat terpasang. Calamares tidak dapat memuat seluruh modul konfigurasi. Terdapat masalah dengan Calamares karena sedang digunakan oleh distribusi.</translation>
+        <translation>%1 tidak dapat terinstal. Calamares tidak dapat memuat seluruh modul konfigurasi. Terdapat masalah dengan Calamares karena sedang digunakan oleh distribusi.</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="185"/>
@@ -207,19 +207,19 @@
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="277"/>
         <source>&amp;Install</source>
-        <translation>&amp;Pasang</translation>
+        <translation>&amp;Instal</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="325"/>
         <source>Cancel installation?</source>
-        <translation>Batalkan pemasangan?</translation>
+        <translation>Batalkan instalasi?</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="326"/>
         <source>Do you really want to cancel the current install process?
 The installer will quit and all changes will be lost.</source>
-        <translation>Apakah Anda benar-benar ingin membatalkan proses pemasangan ini?
-Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
+        <translation>Apakah Anda benar-benar ingin membatalkan proses instalasi ini?
+Instalasi akan ditutup dan semua perubahan akan hilang.</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="331"/>
@@ -244,12 +244,12 @@ Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="238"/>
         <source>The %1 installer is about to make changes to your disk in order to install %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
-        <translation>Pemasang %1 akan membuat perubahan ke disk Anda untuk memasang %2.&lt;br/&gt;&lt;strong&gt;Anda tidak dapat membatalkan perubahan tersebut.&lt;/strong&gt;</translation>
+        <translation>Installer %1 akan membuat perubahan ke disk Anda untuk memasang %2.&lt;br/&gt;&lt;strong&gt;Anda tidak dapat membatalkan perubahan tersebut.&lt;/strong&gt;</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="243"/>
         <source>&amp;Install now</source>
-        <translation>&amp;Pasang sekarang</translation>
+        <translation>&amp;Instal sekarang</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="244"/>
@@ -264,7 +264,7 @@ Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="284"/>
         <source>The installation is complete. Close the installer.</source>
-        <translation>Pemasangan sudah lengkap. Tutup pemasang.</translation>
+        <translation>Instalasi sudah lengkap. Tutup installer.</translation>
     </message>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="160"/>
@@ -274,7 +274,7 @@ Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
     <message>
         <location filename="../src/libcalamaresui/ViewManager.cpp" line="161"/>
         <source>Installation Failed</source>
-        <translation>Pemasangan Gagal</translation>
+        <translation>Instalasi Gagal</translation>
     </message>
 </context>
 <context>
@@ -305,7 +305,7 @@ Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
     <message>
         <location filename="../src/calamares/CalamaresWindow.cpp" line="44"/>
         <source>%1 Installer</source>
-        <translation>Pemasang %1</translation>
+        <translation>Installer %1</translation>
     </message>
     <message>
         <location filename="../src/calamares/CalamaresWindow.cpp" line="111"/>
@@ -319,13 +319,13 @@ Pemasangan akan ditutup dan semua perubahan akan hilang.</translation>
         <location filename="../src/modules/welcome/checker/CheckerWidget.cpp" line="96"/>
         <source>This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;Installation cannot continue. &lt;a href=&quot;#details&quot;&gt;Details...&lt;/a&gt;</source>
         <translation>Komputer ini tidak memenuhi syarat minimum untuk memasang %1.
-Pemasang tidak dapat dilanjutkan. &lt;a href=&quot;</translation>
+Installer tidak dapat dilanjutkan. &lt;a href=&quot;</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/checker/CheckerWidget.cpp" line="113"/>
         <source>This computer does not satisfy some of the recommended requirements for installing %1.&lt;br/&gt;Installation can continue, but some features might be disabled.</source>
         <translation>Komputer ini tidak memenuhi beberapa syarat yang dianjurkan untuk memasang %1.
-Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</translation>
+Instalasi dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/checker/CheckerWidget.cpp" line="151"/>
@@ -351,109 +351,109 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
         <translation>Isian</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="128"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="131"/>
         <source>After:</source>
         <translation>Setelah:</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="235"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="238"/>
         <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
         <translation>&lt;strong&gt;Pemartisian manual&lt;/strong&gt;&lt;br/&gt;Anda bisa membuat atau mengubah ukuran partisi.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="998"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1001"/>
         <source>Boot loader location:</source>
         <translation>Lokasi Boot loader:</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="942"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="945"/>
         <source>%1 will be shrunk to %2MB and a new %3MB partition will be created for %4.</source>
         <translation>%1 akan disusutkan menjadi %2MB dan partisi baru %3MB akan dibuat untuk %4.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="126"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="129"/>
         <source>Select storage de&amp;vice:</source>
         <translation>Pilih perangkat penyimpanan:</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="127"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="924"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="970"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1049"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="130"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="927"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="973"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1052"/>
         <source>Current:</source>
         <translation>Saat ini:</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="795"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="798"/>
         <source>Reuse %1 as home partition for %2.</source>
         <translation>Gunakan kembali %1 sebagai partisi home untuk %2.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="925"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="928"/>
         <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
         <translation>&lt;strong&gt;Pilih sebuah partisi untuk diiris, kemudian seret bilah di bawah untuk mengubah ukuran&lt;/strong&gt;</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1043"/>
         <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
         <translation>&lt;strong&gt;Pilih sebuah partisi untuk memasang&lt;/strong&gt;</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1096"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1099"/>
         <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
         <translation>Sebuah partisi sistem EFI tidak ditemukan pada sistem ini. Silakan kembali dan gunakan pemartisian manual untuk mengeset %1.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1105"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1108"/>
         <source>The EFI system partition at %1 will be used for starting %2.</source>
         <translation>Partisi sistem EFI di %1 akan digunakan untuk memulai %2.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1113"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1116"/>
         <source>EFI system partition:</source>
         <translation>Partisi sistem EFI:</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1200"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1232"/>
         <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
         <translation>Tampaknya media penyimpanan ini tidak mengandung sistem operasi. Apa yang hendak Anda lakukan?&lt;br/&gt;Anda dapat menelaah dan mengkonfirmasi pilihan Anda sebelum dilakukan perubahan pada media penyimpanan.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1205"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1242"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1264"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1288"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1237"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1274"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1296"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1320"/>
         <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color=&quot;red&quot;&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
         <translation>&lt;strong&gt;Hapus disk&lt;/strong&gt;&lt;br/&gt;Aksi ini akan &lt;font color=&quot;red&quot;&gt;menghapus&lt;/font&gt; semua berkas yang ada pada media penyimpanan terpilih.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1232"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1264"/>
         <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
         <translation>Media penyimpanan ini mengandung %1. Apa yang hendak Anda lakukan?&lt;br/&gt;Anda dapat menelaah dan mengkonfirmasi pilihan Anda sebelum dilakukan perubahan pada media penyimpanan.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1209"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1238"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1260"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1284"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1241"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1270"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1292"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1316"/>
         <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
-        <translation>&lt;strong&gt;Pasang berdampingan dengan&lt;/strong&gt;&lt;br/&gt;Pemasang akan mengiris sebuah partisi untuk memberi ruang bagi %1.</translation>
+        <translation>&lt;strong&gt;Instal berdampingan dengan&lt;/strong&gt;&lt;br/&gt;Installer akan mengiris sebuah partisi untuk memberi ruang bagi %1.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1247"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1268"/>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1292"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1245"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1279"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1300"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1324"/>
         <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
         <translation>&lt;strong&gt;Ganti sebuah partisi&lt;/strong&gt;&lt;br/&gt; Ganti partisi dengan %1.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1255"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1287"/>
         <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
         <translation>Media penyimpanan ini telah mengandung sistem operasi. Apa yang hendak Anda lakukan?&lt;br/&gt;Anda dapat menelaah dan mengkonfirmasi pilihan Anda sebelum dilakukan perubahan pada media penyimpanan.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1279"/>
+        <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1311"/>
         <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
         <translation>Media penyimpanan ini telah mengandung beberapa sistem operasi. Apa yang hendak Anda lakukan?&lt;br/&gt;Anda dapat menelaah dan mengkonfirmasi pilihan Anda sebelum dilakukan perubahan pada media penyimpanan.</translation>
     </message>
@@ -624,7 +624,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="79"/>
         <source>The installer failed to create partition on disk &apos;%1&apos;.</source>
-        <translation>Pemasang gagal untuk membuat partisi di disk &apos;%1&apos;.</translation>
+        <translation>Installer gagal untuk membuat partisi di disk &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -658,24 +658,24 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
 <context>
     <name>CreatePartitionTableJob</name>
     <message>
-        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="45"/>
+        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="47"/>
         <source>Create new %1 partition table on %2.</source>
         <translation>Membuat tabel partisi %1 baru di %2.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="52"/>
+        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="54"/>
         <source>Create new &lt;strong&gt;%1&lt;/strong&gt; partition table on &lt;strong&gt;%2&lt;/strong&gt; (%3).</source>
         <translation>Membuat tabel partisi &lt;strong&gt;%1&lt;/strong&gt; baru di &lt;strong&gt;%2&lt;/strong&gt; (%3).</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="62"/>
+        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="64"/>
         <source>Creating new %1 partition table on %2.</source>
         <translation>Membuat tabel partisi %1 baru di %2.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="72"/>
+        <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="82"/>
         <source>The installer failed to create a partition table on %1.</source>
-        <translation>Pemasang gagal membuat tabel partisi pada %1.</translation>
+        <translation>Installer gagal membuat tabel partisi pada %1.</translation>
     </message>
 </context>
 <context>
@@ -717,6 +717,48 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     </message>
 </context>
 <context>
+    <name>CreateVolumeGroupJob</name>
+    <message>
+        <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="38"/>
+        <source>Create new volume group named %1.</source>
+        <translation>Ciptakan grup volume baru bernama %1.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="45"/>
+        <source>Create new volume group named &lt;strong&gt;%1&lt;/strong&gt;.</source>
+        <translation>Ciptakan grup volume baru bernama &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="52"/>
+        <source>Creating new volume group named %1.</source>
+        <translation>Menciptakan grup volume baru bernama %1.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="65"/>
+        <source>The installer failed to create a volume group named &apos;%1&apos;.</source>
+        <translation>Installer gagal menciptakan sebuah grup volume bernama &apos;%1&apos;.</translation>
+    </message>
+</context>
+<context>
+    <name>DeactivateVolumeGroupJob</name>
+    <message>
+        <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="34"/>
+        <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="48"/>
+        <source>Deactivate volume group named %1.</source>
+        <translation>Nonaktifkan grup volume bernama %1.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="41"/>
+        <source>Deactivate volume group named &lt;strong&gt;%1&lt;/strong&gt;.</source>
+        <translation>Nonaktifkan grup volume bernama &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="61"/>
+        <source>The installer failed to deactivate a volume group named %1.</source>
+        <translation>Installer gagal menonaktifkan sebuah grup volume bernama %1.</translation>
+    </message>
+</context>
+<context>
     <name>DeletePartitionJob</name>
     <message>
         <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="40"/>
@@ -736,7 +778,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="68"/>
         <source>The installer failed to delete partition %1.</source>
-        <translation>Pemasang gagal untuk menghapus partisi %1.</translation>
+        <translation>Installer gagal untuk menghapus partisi %1.</translation>
     </message>
 </context>
 <context>
@@ -744,7 +786,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="150"/>
         <source>The type of &lt;strong&gt;partition table&lt;/strong&gt; on the selected storage device.&lt;br&gt;&lt;br&gt;The only way to change the partition table type is to erase and recreate the partition table from scratch, which destroys all data on the storage device.&lt;br&gt;This installer will keep the current partition table unless you explicitly choose otherwise.&lt;br&gt;If unsure, on modern systems GPT is preferred.</source>
-        <translation>Tipe dari &lt;strong&gt;tabel partisi&lt;/strong&gt; pada perangkat penyimpanan terpilih.&lt;br&gt;&lt;br&gt;Satu-satunya cara untuk mengubah tabel partisi adalah dengan menyetip dan menciptakan ulang tabel partisi dari awal, yang melenyapkan semua data pada perangkat penyimpanan.&lt;br&gt;Pemasang ini akan menjaga tabel partisi saat ini kecuali kamu secara gamblang memilih sebaliknya.&lt;br&gt;Jika tidak yakin, pada sistem GPT modern lebih disukai.</translation>
+        <translation>Tipe dari &lt;strong&gt;tabel partisi&lt;/strong&gt; pada perangkat penyimpanan terpilih.&lt;br&gt;&lt;br&gt;Satu-satunya cara untuk mengubah tabel partisi adalah dengan menyetip dan menciptakan ulang tabel partisi dari awal, yang melenyapkan semua data pada perangkat penyimpanan.&lt;br&gt;Installer ini akan menjaga tabel partisi saat ini kecuali kamu secara gamblang memilih sebaliknya.&lt;br&gt;Jika tidak yakin, pada sistem GPT modern lebih disukai.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="107"/>
@@ -759,7 +801,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="121"/>
         <source>This installer &lt;strong&gt;cannot detect a partition table&lt;/strong&gt; on the selected storage device.&lt;br&gt;&lt;br&gt;The device either has no partition table, or the partition table is corrupted or of an unknown type.&lt;br&gt;This installer can create a new partition table for you, either automatically, or through the manual partitioning page.</source>
-        <translation>Pemasang &lt;strong&gt;tidak bisa mendeteksi tabel partisi apapun&lt;/strong&gt; pada media penyimpanan terpilih.&lt;br&gt;&lt;br&gt;Mungkin media ini tidak memiliki tabel partisi, atau tabel partisi yang ada telah korup atau tipenya tidak dikenal.&lt;br&gt;Pemasang dapat membuatkan partisi baru untuk Anda, baik secara otomatis atau melalui laman pemartisian manual.</translation>
+        <translation>Installer &lt;strong&gt;tidak bisa mendeteksi tabel partisi apapun&lt;/strong&gt; pada media penyimpanan terpilih.&lt;br&gt;&lt;br&gt;Mungkin media ini tidak memiliki tabel partisi, atau tabel partisi yang ada telah korup atau tipenya tidak dikenal.&lt;br&gt;Installer dapat membuatkan partisi baru untuk Anda, baik secara otomatis atau melalui laman pemartisian manual.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="131"/>
@@ -775,9 +817,14 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
 <context>
     <name>DeviceModel</name>
     <message>
-        <location filename="../src/modules/partition/core/DeviceModel.cpp" line="80"/>
+        <location filename="../src/modules/partition/core/DeviceModel.cpp" line="83"/>
         <source>%1 - %2 (%3)</source>
         <translation>%1 - %2 (%3)</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/core/DeviceModel.cpp" line="89"/>
+        <source>%1 - (%2)</source>
+        <translation>%1 - (%2)</translation>
     </message>
 </context>
 <context>
@@ -895,37 +942,37 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
 <context>
     <name>FillGlobalStorageJob</name>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="123"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="132"/>
         <source>Set partition information</source>
         <translation>Tetapkan informasi partisi</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="147"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="156"/>
         <source>Install %1 on &lt;strong&gt;new&lt;/strong&gt; %2 system partition.</source>
-        <translation>Pasang %1 pada partisi sistem %2 &lt;strong&gt;baru&lt;/strong&gt;</translation>
+        <translation>Instal %1 pada partisi sistem %2 &lt;strong&gt;baru&lt;/strong&gt;</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="151"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="160"/>
         <source>Set up &lt;strong&gt;new&lt;/strong&gt; %2 partition with mount point &lt;strong&gt;%1&lt;/strong&gt;.</source>
         <translation>Setel partisi %2 &lt;strong&gt;baru&lt;/strong&gt; dengan tempat kait &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="159"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="168"/>
         <source>Install %2 on %3 system partition &lt;strong&gt;%1&lt;/strong&gt;.</source>
-        <translation>Pasang %2 pada sistem partisi %3 &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+        <translation>Instal %2 pada sistem partisi %3 &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="164"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="173"/>
         <source>Set up %3 partition &lt;strong&gt;%1&lt;/strong&gt; with mount point &lt;strong&gt;%2&lt;/strong&gt;.</source>
         <translation>Setel partisi %3 &lt;strong&gt;%1&lt;/strong&gt; dengan tempat kait &lt;strong&gt;%2&lt;/strong&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="176"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="185"/>
         <source>Install boot loader on &lt;strong&gt;%1&lt;/strong&gt;.</source>
-        <translation>Pasang boot loader di &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+        <translation>Instal boot loader di &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="186"/>
+        <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="195"/>
         <source>Setting up mount points.</source>
         <translation>Menyetel tempat kait.</translation>
     </message>
@@ -940,7 +987,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/finished/FinishedPage.ui" line="95"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style=&quot; font-style:italic;&quot;&gt;Done&lt;/span&gt; or close the installer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>Ketika kotak ini dicentang, sistem kamu akan segera dimulai kembali saat mengklik Selesai atau menutup pemasang.</translation>
+        <translation>Ketika kotak ini dicentang, sistem kamu akan segera dimulai kembali saat mengklik Selesai atau menutup installer.</translation>
     </message>
     <message>
         <location filename="../src/modules/finished/FinishedPage.ui" line="98"/>
@@ -950,12 +997,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/finished/FinishedPage.cpp" line="51"/>
         <source>&lt;h1&gt;All done.&lt;/h1&gt;&lt;br/&gt;%1 has been installed on your computer.&lt;br/&gt;You may now restart into your new system, or continue using the %2 Live environment.</source>
-        <translation>&lt;h1&gt;Selesai.&lt;/h1&gt;&lt;br&gt;%1 sudah terpasang di komputer Anda.&lt;br/&gt;Anda dapat memulai ulang ke sistem baru atau lanjut menggunakan lingkungan Live %2.</translation>
+        <translation>&lt;h1&gt;Selesai.&lt;/h1&gt;&lt;br&gt;%1 sudah terinstal di komputer Anda.&lt;br/&gt;Anda dapat memulai ulang ke sistem baru atau lanjut menggunakan lingkungan Live %2.</translation>
     </message>
     <message>
         <location filename="../src/modules/finished/FinishedPage.cpp" line="109"/>
         <source>&lt;h1&gt;Installation Failed&lt;/h1&gt;&lt;br/&gt;%1 has not been installed on your computer.&lt;br/&gt;The error message was: %2.</source>
-        <translation>&lt;h1&gt;Pemasangan Gagal&lt;/h1&gt;&lt;br/&gt;%1 tidak bisa dipasang pada komputermu.&lt;br/&gt;Pesan galatnya adalah: %2.</translation>
+        <translation>&lt;h1&gt;Instalasi Gagal&lt;/h1&gt;&lt;br/&gt;%1 tidak bisa diinstal pada komputermu.&lt;br/&gt;Pesan galatnya adalah: %2.</translation>
     </message>
 </context>
 <context>
@@ -968,12 +1015,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/finished/FinishedViewStep.cpp" line="124"/>
         <source>Installation Complete</source>
-        <translation>Pemasangan Lengkap</translation>
+        <translation>Instalasi Lengkap</translation>
     </message>
     <message>
         <location filename="../src/modules/finished/FinishedViewStep.cpp" line="125"/>
         <source>The installation of %1 is complete.</source>
-        <translation>Pemasangan %1 telah lengkap.</translation>
+        <translation>Instalasi %1 telah lengkap.</translation>
     </message>
 </context>
 <context>
@@ -996,7 +1043,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="77"/>
         <source>The installer failed to format partition %1 on disk &apos;%2&apos;.</source>
-        <translation>Pemasang gagal memformat partisi %1 pada disk &apos;%2&apos;.&apos;%2&apos;.</translation>
+        <translation>Installer gagal memformat partisi %1 pada disk &apos;%2&apos;.&apos;%2&apos;.</translation>
     </message>
 </context>
 <context>
@@ -1004,12 +1051,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="53"/>
         <source>Konsole not installed</source>
-        <translation>Konsole tidak terpasang</translation>
+        <translation>Konsole tidak terinstal</translation>
     </message>
     <message>
         <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="54"/>
         <source>Please install KDE Konsole and try again!</source>
-        <translation>Silahkan pasang KDE Konsole dan ulangi lagi!</translation>
+        <translation>Silahkan instal KDE Konsole dan ulangi lagi!</translation>
     </message>
     <message>
         <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="116"/>
@@ -1099,7 +1146,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/license/LicensePage.cpp" line="130"/>
         <source>Please review the End User License Agreements (EULAs) above.&lt;br/&gt;If you do not agree with the terms, proprietary software will not be installed, and open source alternatives will be used instead.</source>
-        <translation>Mohon periksa End User License Agreements(EULA) di atas.&lt;br/&gt;Bila Anda tidak setuju, perangkat lunak proprietary tidak akan dipasang, dan alternatif open source akan dipasang sebagai gantinya </translation>
+        <translation>Mohon periksa End User License Agreements(EULA) di atas.&lt;br/&gt;Bila Anda tidak setuju, perangkat lunak proprietary tidak akan diinstal, dan alternatif open source akan diinstal sebagai gantinya </translation>
     </message>
     <message>
         <location filename="../src/modules/license/LicensePage.cpp" line="160"/>
@@ -1215,12 +1262,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/netinstall/NetInstallPage.cpp" line="86"/>
         <source>Network Installation. (Disabled: Unable to fetch package lists, check your network connection)</source>
-        <translation>Pemasangan Jaringan. (Dinonfungsikan: Tak mampu menarik daftar paket, periksa sambungan jaringanmu)</translation>
+        <translation>Instalasi Jaringan. (Dinonfungsikan: Tak mampu menarik daftar paket, periksa sambungan jaringanmu)</translation>
     </message>
     <message>
         <location filename="../src/modules/netinstall/NetInstallPage.cpp" line="96"/>
         <source>Network Installation. (Disabled: Received invalid groups data)</source>
-        <translation>Pemasangan jaringan. (Menonaktifkan: Penerimaan kelompok data yang tidak sah)</translation>
+        <translation>Instalasi jaringan. (Menonaktifkan: Penerimaan kelompok data yang tidak sah)</translation>
     </message>
 </context>
 <context>
@@ -1519,7 +1566,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/users/page_usersetup.ui" line="200"/>
         <source>&lt;small&gt;If more than one person will use this computer, you can set up multiple accounts after installation.&lt;/small&gt;</source>
-        <translation>&lt;small&gt;Jika lebih dari satu orang akan menggunakan komputer ini, Anda dapat mengatur beberapa akun setelah pemasangan.&lt;/small&gt;</translation>
+        <translation>&lt;small&gt;Jika lebih dari satu orang akan menggunakan komputer ini, Anda dapat mengatur beberapa akun setelah instalasi.&lt;/small&gt;</translation>
     </message>
     <message>
         <location filename="../src/modules/users/page_usersetup.ui" line="335"/>
@@ -1678,22 +1725,42 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
         <translation>&amp;Hapus</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="148"/>
-        <source>Install boot &amp;loader on:</source>
-        <translation>Pasang boot %loader pada:</translation>
+        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="132"/>
+        <source>New Volume Group</source>
+        <translation>Grup Volume Baru</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="171"/>
+        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="139"/>
+        <source>Resize Volume Group</source>
+        <translation>Ubah-ukuran Grup Volume</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="146"/>
+        <source>Deactivate Volume Group</source>
+        <translation>Nonaktifkan Grup Volume</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="153"/>
+        <source>Remove Volume Group</source>
+        <translation>Hapus Grup Volume</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/PartitionPage.ui" line="180"/>
+        <source>I&amp;nstall boot loader on:</source>
+        <translation>I&amp;nstal boot loader di:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="217"/>
         <source>Are you sure you want to create a new partition table on %1?</source>
         <translation>Apakah Anda yakin ingin membuat tabel partisi baru pada %1?</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="195"/>
+        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="241"/>
         <source>Can not create new partition</source>
         <translation>Tidak bisa menciptakan partisi baru.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="196"/>
+        <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="242"/>
         <source>The partition table on %1 already has %2 primary partitions, and no more can be added. Please remove one primary partition and add an extended partition, instead.</source>
         <translation>Partisi tabel pada %1 sudah memiliki %2 partisi primer, dan tidak ada lagi yang bisa ditambahkan. Silakan hapus salah satu partisi primer dan tambahkan sebuah partisi extended, sebagai gantinya.</translation>
     </message>
@@ -1713,12 +1780,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="159"/>
         <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system.</source>
-        <translation>Pasang %1 &lt;strong&gt;berdampingan&lt;/strong&gt; dengan sistem operasi lain.</translation>
+        <translation>Instal %1 &lt;strong&gt;berdampingan&lt;/strong&gt; dengan sistem operasi lain.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="163"/>
         <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1.</source>
-        <translation>&lt;strong&gt;Hapus&lt;/strong&gt; diska dan pasang %1.</translation>
+        <translation>&lt;strong&gt;Hapus&lt;/strong&gt; diska dan instal %1.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="167"/>
@@ -1733,12 +1800,12 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="185"/>
         <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3).</source>
-        <translation>Pasang %1 &lt;strong&gt;berdampingan&lt;/strong&gt; dengan sistem operasi lain di disk &lt;strong&gt;%2&lt;/strong&gt; (%3).</translation>
+        <translation>Instal %1 &lt;strong&gt;berdampingan&lt;/strong&gt; dengan sistem operasi lain di disk &lt;strong&gt;%2&lt;/strong&gt; (%3).</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="191"/>
         <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1.</source>
-        <translation>&lt;strong&gt;Hapus&lt;/strong&gt; diska &lt;strong&gt;%2&lt;/strong&gt; (%3) dan pasang %1.</translation>
+        <translation>&lt;strong&gt;Hapus&lt;/strong&gt; diska &lt;strong&gt;%2&lt;/strong&gt; (%3) dan instal %1.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/PartitionViewStep.cpp" line="197"/>
@@ -1825,7 +1892,7 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
     <message>
         <location filename="../src/modules/plasmalnf/PlasmaLnfPage.cpp" line="67"/>
         <source>Please choose a look-and-feel for the KDE Plasma Desktop. You can also skip this step and configure the look-and-feel once the system is installed. Clicking on a look-and-feel selection will give you a live preview of that look-and-feel.</source>
-        <translation>Silakan pilih sebuah look-and-feel untuk KDE Plasma Desktop. Anda juga dapat melewati langkah ini dan konfigurasi look-and-feel sekali ketika sistem terpasang. Mengeklik pilihan look-and-feel akan memberi Anda pratinjau langsung dari look-and-feel.</translation>
+        <translation>Silakan pilih sebuah look-and-feel untuk KDE Plasma Desktop. Anda juga dapat melewati langkah ini dan konfigurasi look-and-feel setelah  sistem terinstal. Mengeklik pilihan look-and-feel akan memberi Anda pratinjau langsung pada look-and-feel tersebut.</translation>
     </message>
 </context>
 <context>
@@ -1839,17 +1906,17 @@ Pemasangan dapat dilanjutkan, namun beberapa fitur akan dinonfungsikan.</transla
 <context>
     <name>PreserveFiles</name>
     <message>
-        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="83"/>
+        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="85"/>
         <source>Saving files for later ...</source>
         <translation>Menyimpan file untuk kemudian...</translation>
     </message>
     <message>
-        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="89"/>
+        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="123"/>
         <source>No files configured to save for later.</source>
         <translation>Tiada file yang dikonfigurasi untuk penyimpanan nanti.</translation>
     </message>
     <message>
-        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="145"/>
+        <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="177"/>
         <source>Not all of the configured files could be preserved.</source>
         <translation>Tidak semua file yang dikonfigurasi dapat dipertahankan.</translation>
     </message>
@@ -1963,6 +2030,25 @@ Keluaran:
     </message>
 </context>
 <context>
+    <name>RemoveVolumeGroupJob</name>
+    <message>
+        <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="34"/>
+        <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="48"/>
+        <source>Remove Volume Group named %1.</source>
+        <translation>Hapus Grup Volume bernama %1.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="41"/>
+        <source>Remove Volume Group named &lt;strong&gt;%1&lt;/strong&gt;.</source>
+        <translation>Hapus Grup Volume bernama &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="61"/>
+        <source>The installer failed to remove a volume group named &apos;%1&apos;.</source>
+        <translation>Installer gagal menghapus sebuah grup volume bernama &apos;%1&apos;.</translation>
+    </message>
+</context>
+<context>
     <name>ReplaceWidget</name>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.ui" line="14"/>
@@ -1972,7 +2058,7 @@ Keluaran:
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="134"/>
         <source>Select where to install %1.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Warning: &lt;/font&gt;this will delete all files on the selected partition.</source>
-        <translation>Pilih tempat pemasangan %1.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Peringatan: &lt;/font&gt;hal ini akan menghapus semua berkas di partisi terpilih.</translation>
+        <translation>Pilih tempat instalasi %1.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Peringatan: &lt;/font&gt;hal ini akan menghapus semua berkas di partisi terpilih.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="160"/>
@@ -1982,17 +2068,17 @@ Keluaran:
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="168"/>
         <source>%1 cannot be installed on empty space. Please select an existing partition.</source>
-        <translation>%1 tidak dapat dipasang di ruang kosong. Mohon pilih partisi yang tersedia.</translation>
+        <translation>%1 tidak dapat diinstal di ruang kosong. Mohon pilih partisi yang tersedia.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="178"/>
         <source>%1 cannot be installed on an extended partition. Please select an existing primary or logical partition.</source>
-        <translation>%1 tidak bisa dipasang pada Partisi Extended. Mohon pilih Partisi Primary atau Logical yang tersedia.</translation>
+        <translation>%1 tidak bisa diinstal pada Partisi Extended. Mohon pilih Partisi Primary atau Logical yang tersedia.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="188"/>
         <source>%1 cannot be installed on this partition.</source>
-        <translation>%1 tidak dapat dipasang di partisi ini.</translation>
+        <translation>%1 tidak dapat diinstal di partisi ini.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="194"/>
@@ -2024,7 +2110,7 @@ Keluaran:
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="278"/>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="302"/>
         <source>&lt;strong&gt;%3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;%1 will be installed on %2.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Warning: &lt;/font&gt;all data on partition %2 will be lost.</source>
-        <translation>&lt;strong&gt;%3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;%1 akan dipasang pada %2.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Peringatan: &lt;/font&gt;seluruh data %2 akan hilang.</translation>
+        <translation>&lt;strong&gt;%3&lt;/strong&gt;&lt;br/&gt;&lt;br/&gt;%1 akan diinstal pada %2.&lt;br/&gt;&lt;font color=&quot;red&quot;&gt;Peringatan: &lt;/font&gt;seluruh data %2 akan hilang.</translation>
     </message>
     <message>
         <location filename="../src/modules/partition/gui/ReplaceWidget.cpp" line="270"/>
@@ -2087,12 +2173,83 @@ Keluaran:
     <message>
         <location filename="../src/modules/welcome/checker/RequirementsChecker.cpp" line="155"/>
         <source>The installer is not running with administrator rights.</source>
-        <translation>Pemasang tidak dijalankan dengan kewenangan administrator.</translation>
+        <translation>Installer tidak dijalankan dengan kewenangan administrator.</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/checker/RequirementsChecker.cpp" line="163"/>
         <source>The screen is too small to display the installer.</source>
-        <translation>Layar terlalu kecil untuk menampilkan pemasang.</translation>
+        <translation>Layar terlalu kecil untuk menampilkan installer.</translation>
+    </message>
+</context>
+<context>
+    <name>ResizeFSJob</name>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="130"/>
+        <source>Resize Filesystem Job</source>
+        <translation>Tugas Ubah-ukuran Filesystem</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="238"/>
+        <source>Invalid configuration</source>
+        <translation>Konfigurasi taksah</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="239"/>
+        <source>The file-system resize job has an invalid configuration and will not run.</source>
+        <translation>Tugas pengubahan ukuran filesystem mempunyai sebuah konfigurasi yang taksah dan tidak akan berjalan.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="253"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="263"/>
+        <source>KPMCore not Available</source>
+        <translation>KPMCore tidak Tersedia</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="254"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="264"/>
+        <source>Calamares cannot start KPMCore for the file-system resize job.</source>
+        <translation>Calamares gak bisa menjalankan KPMCore untuk tugas pengubahan ukuran filesystem.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="272"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="281"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="294"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="303"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="320"/>
+        <source>Resize Failed</source>
+        <translation>Pengubahan Ukuran, Gagal</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="273"/>
+        <source>The filesystem %1 could not be found in this system, and cannot be resized.</source>
+        <translation>Filesystem %1 enggak ditemukan dalam sistem ini, dan gak bisa diubahukurannya.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="274"/>
+        <source>The device %1 could not be found in this system, and cannot be resized.</source>
+        <translation>Perangkat %1 enggak ditemukan dalam sistem ini, dan gak bisa diubahukurannya.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="282"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="295"/>
+        <source>The filesystem %1 cannot be resized.</source>
+        <translation>Filesystem %1 gak bisa diubahukurannya.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="283"/>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="296"/>
+        <source>The device %1 cannot be resized.</source>
+        <translation>Perangkat %1 gak bisa diubahukurannya.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="304"/>
+        <source>The filesystem %1 must be resized, but cannot.</source>
+        <translation>Filesystem %1 mestinya bisa diubahukurannya, namun gak bisa.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="305"/>
+        <source>The device %1 must be resized, but cannot</source>
+        <translation>Perangkat %1 mestinya bisa diubahukurannya, namun gak bisa.</translation>
     </message>
 </context>
 <context>
@@ -2115,7 +2272,26 @@ Keluaran:
     <message>
         <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="85"/>
         <source>The installer failed to resize partition %1 on disk &apos;%2&apos;.</source>
-        <translation>Pemasang gagal untuk merubah ukuran partisi %1 pada disk &apos;%2&apos;.</translation>
+        <translation>Installer gagal untuk merubah ukuran partisi %1 pada disk &apos;%2&apos;.</translation>
+    </message>
+</context>
+<context>
+    <name>ResizeVolumeGroupJob</name>
+    <message>
+        <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="37"/>
+        <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="55"/>
+        <source>Resize volume group named %1 from %2 to %3.</source>
+        <translation>Ubah ukuran grup volume bernama %1 dari %2 ke %3.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="46"/>
+        <source>Resize volume group named &lt;strong&gt;%1&lt;/strong&gt; from &lt;strong&gt;%2&lt;/strong&gt; to &lt;strong&gt;%3&lt;/strong&gt;.</source>
+        <translation>Ubah ukuran grup volume bernama &lt;strong&gt;%1&lt;/strong&gt; dari &lt;strong&gt;%2&lt;/strong&gt; ke %3&lt;strong&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="70"/>
+        <source>The installer failed to resize a volume group named &apos;%1&apos;.</source>
+        <translation>Installer gagal mengubah ukuran sebuah grup volume bernama &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -2169,24 +2345,24 @@ Keluaran:
         <translation>Model papan ketik ditetapkan ke %1, tata letak ke %2-%3</translation>
     </message>
     <message>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="318"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="321"/>
         <source>Failed to write keyboard configuration for the virtual console.</source>
         <translation>Gagal menulis konfigurasi keyboard untuk virtual console.</translation>
     </message>
     <message>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="319"/>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="323"/>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="329"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="322"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="326"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="332"/>
         <source>Failed to write to %1</source>
         <translation>Gagal menulis ke %1.</translation>
     </message>
     <message>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="322"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="325"/>
         <source>Failed to write keyboard configuration for X11.</source>
         <translation>Gagal menulis konfigurasi keyboard untuk X11.</translation>
     </message>
     <message>
-        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="328"/>
+        <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="331"/>
         <source>Failed to write keyboard configuration to existing /etc/default directory.</source>
         <translation>Gagal menulis konfigurasi keyboard ke direktori /etc/default yang ada.</translation>
     </message>
@@ -2269,9 +2445,9 @@ Keluaran:
         <translation>Menyetel bendera &lt;strong&gt;%1&lt;/strong&gt; pada partisi baru.</translation>
     </message>
     <message>
-        <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="140"/>
+        <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="144"/>
         <source>The installer failed to set flags on partition %1.</source>
-        <translation>Pemasang gagal menetapkan bendera pada partisi %1.</translation>
+        <translation>Installer gagal menetapkan bendera pada partisi %1.</translation>
     </message>
 </context>
 <context>
@@ -2377,7 +2553,7 @@ Keluaran:
     <message>
         <location filename="../src/modules/summary/SummaryPage.cpp" line="49"/>
         <source>This is an overview of what will happen once you start the install procedure.</source>
-        <translation>Berikut adalah tinjauan mengenai yang akan terjadi setelah Anda memulai prosedur pemasangan.</translation>
+        <translation>Berikut adalah tinjauan mengenai yang akan terjadi setelah Anda memulai prosedur instalasi.</translation>
     </message>
 </context>
 <context>
@@ -2403,7 +2579,7 @@ Keluaran:
     <message>
         <location filename="../src/modules/tracking/TrackingJobs.cpp" line="88"/>
         <source>Internal error in install-tracking.</source>
-        <translation>Galat intern di pelacakan-pemasangan.</translation>
+        <translation>Galat intern di pelacakan-instalasi.</translation>
     </message>
     <message>
         <location filename="../src/modules/tracking/TrackingJobs.cpp" line="89"/>
@@ -2455,7 +2631,7 @@ Keluaran:
     <message>
         <location filename="../src/modules/tracking/page_trackingstep.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By selecting this, you will send &lt;span style=&quot; font-weight:600;&quot;&gt;no information at all&lt;/span&gt; about your installation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dengan memilih ini, Anda akan mengirim &lt;span style=&quot; font-weight:600;&quot;&gt;tidak ada informasi di &lt;/span&gt; tentang pemasangan Anda. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dengan memilih ini, Anda akan mengirim &lt;span style=&quot; font-weight:600;&quot;&gt;tidak ada informasi di &lt;/span&gt; tentang instalasi Anda. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/modules/tracking/page_trackingstep.ui" line="123"/>
@@ -2479,22 +2655,22 @@ Keluaran:
     <message>
         <location filename="../src/modules/tracking/TrackingPage.cpp" line="44"/>
         <source>Install tracking helps %1 to see how many users they have, what hardware they install %1 to and (with the last two options below), get continuous information about preferred applications. To see what will be sent, please click the help icon next to each area.</source>
-        <translation>Pasang bantuan pelacakan %1 untuk melihat berapa banyak pengguna memiliki, piranti keras apa yang mereka pasang %1 dan (dengan dua pilihan terakhir), dapatkan informasi berkelanjutan tentang aplikasi yang disukai. Untuk melihat apa yang akan dikirim, silakan klik ikon bantuan ke beberapa area selanjtunya.</translation>
+        <translation>Instal bantuan pelacakan %1 untuk melihat berapa banyak pengguna memiliki, piranti keras apa yang mereka instal %1 dan (dengan dua pilihan terakhir), dapatkan informasi berkelanjutan tentang aplikasi yang disukai. Untuk melihat apa yang akan dikirim, silakan klik ikon bantuan ke beberapa area selanjtunya.</translation>
     </message>
     <message>
         <location filename="../src/modules/tracking/TrackingPage.cpp" line="45"/>
         <source>By selecting this you will send information about your installation and hardware. This information will &lt;b&gt;only be sent once&lt;/b&gt; after the installation finishes.</source>
-        <translation>Dengan memilih ini Anda akan mengirim informasi tentang pemasangan dan piranti keras Anda. Informasi ini hanya akan &lt;b&gt;dikirim sekali&lt;/b&gt; setelah pemasangan selesai. </translation>
+        <translation>Dengan memilih ini Anda akan mengirim informasi tentang instalasi dan piranti keras Anda. Informasi ini hanya akan &lt;b&gt;dikirim sekali&lt;/b&gt; setelah instalasi selesai. </translation>
     </message>
     <message>
         <location filename="../src/modules/tracking/TrackingPage.cpp" line="46"/>
         <source>By selecting this you will &lt;b&gt;periodically&lt;/b&gt; send information about your installation, hardware and applications, to %1.</source>
-        <translation>Dengan memilih ini anda akan &lt;b&gt; secara berkala&lt;/b&gt; mengirim informasi tentang pemasangan, piranti keras dan aplikasi Anda, ke %1.</translation>
+        <translation>Dengan memilih ini anda akan &lt;b&gt; secara berkala&lt;/b&gt; mengirim informasi tentang instalasi, piranti keras dan aplikasi Anda, ke %1.</translation>
     </message>
     <message>
         <location filename="../src/modules/tracking/TrackingPage.cpp" line="47"/>
         <source>By selecting this you will &lt;b&gt;regularly&lt;/b&gt; send information about your installation, hardware, applications and usage patterns, to %1.</source>
-        <translation>Dengan memilih ini anda akan&lt;b&gt;secara teratur&lt;/b&gt; mengirim informasi tentang pemasangan, piranti keras, aplikasi dan pola pemakaian Anda, ke %1.</translation>
+        <translation>Dengan memilih ini anda akan&lt;b&gt;secara teratur&lt;/b&gt; mengirim informasi tentang instalasi, piranti keras, aplikasi dan pola pemakaian Anda, ke %1.</translation>
     </message>
 </context>
 <context>
@@ -2548,6 +2724,67 @@ Keluaran:
     </message>
 </context>
 <context>
+    <name>VolumeGroupBaseDialog</name>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="14"/>
+        <source>VolumeGroupDialog</source>
+        <translation>DialogGrupVolume</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="20"/>
+        <source>List of Physical Volumes</source>
+        <translation>Daftar dari Volume Fisik</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="30"/>
+        <source>Volume Group Name:</source>
+        <translation>Nama Grup Volume:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="43"/>
+        <source>Volume Group Type:</source>
+        <translation>Tipe Grup Volume:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="56"/>
+        <source>Physical Extent Size:</source>
+        <translation>Ukuran Luas Fisik:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="66"/>
+        <source> MiB</source>
+        <translation> MiB</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="82"/>
+        <source>Total Size:</source>
+        <translation>Total Ukuran:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="92"/>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="112"/>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="132"/>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="152"/>
+        <source>---</source>
+        <translation>---</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="102"/>
+        <source>Used Size:</source>
+        <translation>Ukuran Terpakai:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="122"/>
+        <source>Total Sectors:</source>
+        <translation>Total Sektor:</translation>
+    </message>
+    <message>
+        <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="142"/>
+        <source>Quantity of LVs:</source>
+        <translation>Kuantitas LV:</translation>
+    </message>
+</context>
+<context>
     <name>WelcomePage</name>
     <message>
         <location filename="../src/modules/welcome/WelcomePage.ui" line="14"/>
@@ -2582,17 +2819,17 @@ Keluaran:
     <message>
         <location filename="../src/modules/welcome/WelcomePage.cpp" line="60"/>
         <source>&lt;h1&gt;Welcome to the %1 installer.&lt;/h1&gt;</source>
-        <translation>&lt;h1&gt;Selamat datang di pemasang %1.&lt;/h1&gt;</translation>
+        <translation>&lt;h1&gt;Selamat datang di installer %1.&lt;/h1&gt;</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/WelcomePage.cpp" line="60"/>
         <source>&lt;h1&gt;Welcome to the Calamares installer for %1.&lt;/h1&gt;</source>
-        <translation>&lt;h1&gt;Selamat datang di Calamares pemasang untuk %1.&lt;/h1&gt;</translation>
+        <translation>&lt;h1&gt;Selamat datang di Calamares installer untuk %1.&lt;/h1&gt;</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/WelcomePage.cpp" line="73"/>
         <source>About %1 installer</source>
-        <translation>Tentang pemasang %1</translation>
+        <translation>Tentang installer %1</translation>
     </message>
     <message>
         <location filename="../src/modules/welcome/WelcomePage.cpp" line="75"/>
