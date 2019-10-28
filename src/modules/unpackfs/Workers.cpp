@@ -24,4 +24,33 @@ Worker::Worker() {}
 
 Worker::~Worker() {}
 
+UnsquashWorker::UnsquashWorker( const QString& sourceSquashFS, const QString& destination )
+    : m_source( sourceSquashFS )
+    , m_dest( destination )
+{
+}
+
+bool
+UnsquashWorker::checkRequirements()
+{
+    // TODO: actually check for existence
+    return false;
+}
+
+bool
+UnsquashWorker::checkRequirements( const QString& target )
+{
+    // TODO: actually check for existence of target
+    // TODO: check for presence of m_dest in target
+    return false;
+}
+
+bool
+UnsquashWorker::run()
+{
+    // TODO: actually unsquash
+    return false;
+}
+
+
 }  // namespace UnpackFS

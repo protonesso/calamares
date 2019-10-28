@@ -19,6 +19,8 @@
 #ifndef UNPACKFS_WORKERS_H
 #define UNPACKFS_WORKERS_H
 
+#include <QString>
+
 namespace UnpackFS
 {
 class Worker
@@ -35,6 +37,19 @@ public:
 
     ///@brief Do the work (only if both requirements are met)
     virtual bool run() = 0;
+};
+
+class UnsquashWorker : public Worker
+{
+public:
+    UnsquashWorker( const QString& sourceSquashFS, const QString& destination );
+    bool checkRequirements() override;
+    bool checkRequirements( const QString& target ) override;
+    bool run() override;
+
+private:
+    const QString m_source;
+    const QString m_dest;
 };
 
 }  // namespace UnpackFS
