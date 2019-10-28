@@ -16,6 +16,11 @@
  *   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "UnpackFSJob.h"
+
+#include "GlobalStorage.h"
+#include "JobQueue.h"
+#include "Settings.h"
 #include "utils/Logger.h"
 
 #include <QtTest/QtTest>
@@ -31,18 +36,54 @@ private Q_SLOTS:
     void initTestCase();
 
     void testBogus();
+    void testBadInternals();
+
+private:
+    std::unique_ptr< Calamares::Settings > settings_p;
+    std::unique_ptr< Calamares::JobQueue > jobqueue_p;
 };
 
 void
 UnpackFSTests::initTestCase()
 {
     Logger::setupLogLevel( Logger::LOGDEBUG );
+    if ( !Calamares::Settings::instance() )
+    {
+        settings_p.reset( new Calamares::Settings( QString(), true ) );
+    }
+
+    if ( !Calamares::JobQueue::instance() )
+    {
+        jobqueue_p.reset( new Calamares::JobQueue( nullptr ) );
+    }
 }
 
 void
 UnpackFSTests::testBogus()
 {
     QVERIFY( true );
+}
+
+void
+UnpackFSTests::testBadInternals()
+{
+    UnpackFSJob j( nullptr );
+    QVERIFY( !j.prettyName().isEmpty() );
+
+    auto r0 = j.exec();
+    QVERIFY( !r0 );
+    QCOMPARE( r0.errorCode(), Calamares::JobResult::GenericError );
+
+    Calamares::JobQueue::instance()->globalStorage()->insert( "rootMountPoint", QString() );
+    auto r1 = j.exec();
+    QVERIFY( !r1 );
+    QCOMPARE( r1.errorCode(), Calamares::JobResult::InvalidConfiguration );
+
+    Calamares::JobQueue::instance()->globalStorage()->insert( "rootMountPoint",
+                                                              QString( "/var/nonexistent/nonexistent" ) );
+    auto r2 = j.exec();
+    QVERIFY( !r2 );
+    QCOMPARE( r2.errorCode(), Calamares::JobResult::InvalidConfiguration );
 }
 
 

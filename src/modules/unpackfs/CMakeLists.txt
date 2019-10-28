@@ -1,8 +1,9 @@
+set(_src UnpackFSJob.cpp Workers.cpp)
+
 calamares_add_plugin( unpackfs
     TYPE job
     EXPORT_MACRO PLUGINDLLEXPORT_PRO
-    SOURCES
-        UnpackFSJob.cpp
+    SOURCES ${_src}
     LINK_PRIVATE_LIBRARIES
         calamares
     SHARED_LIB
@@ -11,6 +12,7 @@ calamares_add_plugin( unpackfs
 if ( ECM_FOUND AND BUILD_TESTING )
     ecm_add_test(
             Tests.cpp
+            ${_src}
         TEST_NAME
             unpackfstest
         LINK_LIBRARIES

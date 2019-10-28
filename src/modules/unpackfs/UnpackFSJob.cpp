@@ -60,9 +60,10 @@ UnpackFSJob::exec()
     if ( s.isEmpty() || !QFile::exists( s ) || !QFileInfo( s ).isDir() )
     {
         cError() << "Bad root mount point" << s;
-        return Calamares::JobResult::error(
+        return Calamares::JobResult::internalError(
             tr( "Bad mount point for root partition" ),
-            tr( "rootMountPoint is \"%1\", which does not exist, doing nothing" ).arg( s ) );
+            tr( "rootMountPoint is \"%1\", which does not exist, doing nothing" ).arg( s ),
+            Calamares::JobResult::InvalidConfiguration );
     }
 
     return Calamares::JobResult::internalError( "UnpackFS", "Unimplemented", 0 );  //Calamares::JobResult::);
