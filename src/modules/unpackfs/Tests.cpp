@@ -39,9 +39,10 @@ UnpackFSTests::initTestCase()
     Logger::setupLogLevel( Logger::LOGDEBUG );
 }
 
-void UnpackFSTests::testBogus()
+void
+UnpackFSTests::testBogus()
 {
-    QVERIFY(true);
+    QVERIFY( true );
 }
 
 

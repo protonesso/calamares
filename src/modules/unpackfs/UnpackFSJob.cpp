@@ -45,7 +45,7 @@ UnpackFSJob::prettyName() const
 Calamares::JobResult
 UnpackFSJob::exec()
 {
-    return Calamares::JobResult::internalError("UnpackFS", "Unimplemented", 0); //Calamares::JobResult::);
+    return Calamares::JobResult::internalError( "UnpackFS", "Unimplemented", 0 );  //Calamares::JobResult::);
 }
 
 
