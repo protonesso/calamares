@@ -26,6 +26,7 @@
 #include "JobQueue.h"
 
 #include <QFile>
+#include <QFileInfo>
 
 UnpackFSJob::UnpackFSJob( QObject* parent )
     : Calamares::CppJob( parent )
@@ -45,6 +46,25 @@ UnpackFSJob::prettyName() const
 Calamares::JobResult
 UnpackFSJob::exec()
 {
+    Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
+    if ( !gs->contains( "rootMountPoint" ) )
+    {
+        cError() << "No mount point for root partition.";
+        return Calamares::JobResult::internalError(
+            tr( "No mount point for root partition" ),
+            tr( "globalstorage does not contain a \"rootMountPoint\" key, doing nothing" ),
+            0 );
+    }
+
+    QString s = gs->value( "rootMountPoint" ).toString();
+    if ( s.isEmpty() || !QFile::exists( s ) || !QFileInfo( s ).isDir() )
+    {
+        cError() << "Bad root mount point" << s;
+        return Calamares::JobResult::error(
+            tr( "Bad mount point for root partition" ),
+            tr( "rootMountPoint is \"%1\", which does not exist, doing nothing" ).arg( s ) );
+    }
+
     return Calamares::JobResult::internalError( "UnpackFS", "Unimplemented", 0 );  //Calamares::JobResult::);
 }
 
