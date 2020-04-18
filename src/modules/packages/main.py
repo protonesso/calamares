@@ -389,6 +389,24 @@ class PMApk(PackageManager):
     def update_system(self):
         check_target_env_call(["apk", "upgrade", "--available"])
 
+class PMNeko(PackageManager):
+    backend = "neko"
+
+    def install(self, pkgs, from_local=False):
+        for pkg in pkgs:
+            check_target_env_call(["neko", "em", pkg])
+
+    def remove(self, pkgs):
+        for pkg in pkgs:
+            check_target_env_call(["neko", "rm", pkg])
+
+    def update_db(self):
+        check_target_env_call(["reposync"])
+#        check_target_env_call(["neko", "sy"])
+
+    def update_system(self):
+        check_target_env_call(["neko", "up"])
+
 
 # Collect all the subclasses of PackageManager defined above,
 # and index them based on the backend property of each class.

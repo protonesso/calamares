@@ -92,17 +92,17 @@ navigation: widget
 # are visible as buttons there if the corresponding *show* keys
 # are set to "true" (they can also be overridden).
 strings:
-    productName:         "@{NAME}"
-    shortProductName:    Generic
-    version:             2020.2 LTS
-    shortVersion:        2020.2
-    versionedName:       Fancy GNU/Linux 2020.2 LTS "Turgid Tuba"
-    shortVersionedName:  FancyGL 2020.2
-    bootloaderEntryName: FancyGL
-    productUrl:          https://calamares.io/
-    supportUrl:          https://github.com/calamares/calamares/issues
-    knownIssuesUrl:      https://calamares.io/about/
-    releaseNotesUrl:     https://calamares.io/about/
+    productName:         Ataraxia Linux
+    shortProductName:    Ataraxia Linux
+    version:             1.0
+    shortVersion:        1.0
+    versionedName:       Ataraxia Linux
+    shortVersionedName:  Ataraxia Linux
+    bootloaderEntryName: Ataraxia Linux
+    productUrl:          https://ataraxialinux.github.io/
+    supportUrl:          https://github.com/ataraxialinux/ataraxia/issues
+    knownIssuesUrl:      https://github.com/ataraxialinux/ataraxia/issues
+    releaseNotesUrl:     https://github.com/ataraxialinux/ataraxia/releases
 
 # These images are loaded from the branding module directory.
 #
